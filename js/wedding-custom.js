@@ -225,78 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // -------------------------------------------------------------
-    // 5. WhatsApp RSVP Form Integration
-    // -------------------------------------------------------------
-    const rsvpForm = document.getElementById("weddingRsvpForm");
-    if (rsvpForm) {
-        rsvpForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById("rsvpName").value.trim();
-            const phone = document.getElementById("rsvpPhone").value.trim();
-            const guests = document.getElementById("rsvpGuests").value;
-            const side = document.getElementById("rsvpSide").value;
-            const message = document.getElementById("rsvpMessage").value.trim();
-
-            if (!name) {
-                alert("Please enter your name.");
-                return;
-            }
-
-            const rsvpDetails = `Namaste! 🙏\n\n*Wedding RSVP for Kanika & Vikas (Feb 2027)*\n*Guest Name:* ${name}\n*Phone:* ${phone || 'N/A'}\n*Attending as:* ${side}\n*Number of Guests:* ${guests}\n*Message / Blessings:* ${message || 'Best wishes to the couple!'}`;
-
-            const encoded = encodeURIComponent(rsvpDetails);
-            const waUrl = `https://wa.me/918219877037?text=${encoded}`;
-            window.open(waUrl, '_blank');
-
-            const alertBox = document.getElementById("rsvpSuccessAlert");
-            if (alertBox) {
-                alertBox.style.display = "block";
-                setTimeout(() => { alertBox.style.display = "none"; }, 5000);
-            }
-            rsvpForm.reset();
-        });
-    }
-
-    // Direct WhatsApp Button
-    const directWaBtn = document.getElementById("btnDirectWhatsApp");
-    if (directWaBtn) {
-        directWaBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            const text = encodeURIComponent("Namaste! 🙏 We received your wedding invitation for Kanika & Vikas's wedding (Feb 2027, Hamirpur H.P.). Hearty congratulations and blessings to both families!");
-            window.open(`https://wa.me/918219877037?text=${text}`, '_blank');
-        });
-    }
-
-    // -------------------------------------------------------------
-    // 6. Digital Shagun (GPay / UPI Copy Handler)
-    // -------------------------------------------------------------
-    const btnCopyUpi = document.getElementById("btnCopyUpi");
-    if (btnCopyUpi) {
-        btnCopyUpi.addEventListener("click", function () {
-            const upiId = "vk440231-1@oksbi";
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(upiId).then(function () {
-                    const originalHtml = btnCopyUpi.innerHTML;
-                    btnCopyUpi.innerHTML = '<i class="fas fa-check text-success mr-1"></i> Copied!';
-                    btnCopyUpi.classList.add("btn-success");
-                    btnCopyUpi.classList.remove("btn-outline-warning");
-                    setTimeout(function () {
-                        btnCopyUpi.innerHTML = originalHtml;
-                        btnCopyUpi.classList.remove("btn-success");
-                        btnCopyUpi.classList.add("btn-outline-warning");
-                    }, 2500);
-                }).catch(function () {
-                    prompt("Copy UPI ID:", upiId);
-                });
-            } else {
-                prompt("Copy UPI ID:", upiId);
-            }
-        });
-    }
-
-    // -------------------------------------------------------------
-    // 7. Wedding Photo Drive & Multi-Select Gallery Upload Helper
+    // 5. Wedding Photo Drive & Multi-Select Gallery Upload Helper
     // -------------------------------------------------------------
     const btnSelectPhotos = document.getElementById("btnSelectPhotos");
     const guestPhotoPicker = document.getElementById("guestPhotoPicker");
