@@ -249,10 +249,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const waUrl = `https://wa.me/918219877037?text=${encoded}`;
             window.open(waUrl, '_blank');
 
-            if (message) {
-                addBlessingToWall(name, message);
-            }
-
             const alertBox = document.getElementById("rsvpSuccessAlert");
             if (alertBox) {
                 alertBox.style.display = "block";
@@ -273,67 +269,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // -------------------------------------------------------------
-    // 6. Blessings / Wishes Wall
+    // 6. Digital Shagun (GPay / UPI Copy Handler)
     // -------------------------------------------------------------
-    const wishesList = document.getElementById("wishesContainer");
-    const defaultWishes = [
-        {
-            name: "Dr. Rajesh Sharma & Family",
-            text: "Heartiest congratulations to Kanika and Vikas! May God bless both of you with eternal love, harmony, and joy.",
-            time: "Yesterday"
-        },
-        {
-            name: "Sunil Thakur (Hamirpur)",
-            text: "Congratulations to the Singh and Kumar families! Looking forward to the auspicious celebrations and delicious Himachali Dhaam!",
-            time: "2 days ago"
-        },
-        {
-            name: "Pooja & Amit Verma",
-            text: "Wishing dear Kanika & Vikas a very happy married life ahead. वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ!",
-            time: "3 days ago"
-        }
-    ];
-
-    function renderWishes() {
-        if (!wishesList) return;
-        const stored = JSON.parse(localStorage.getItem("wedding_wishes") || "[]");
-        const allWishes = [...stored, ...defaultWishes];
-
-        wishesList.innerHTML = allWishes.slice(0, 8).map(w => `
-            <div class="wishes-card">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="wishes-author"><i class="fas fa-heart text-danger mr-1"></i> ${escapeHtml(w.name)}</span>
-                    <span class="wishes-time">${escapeHtml(w.time || 'Just now')}</span>
-                </div>
-                <p class="m-0 text-dark" style="font-size: 13.5px;">"${escapeHtml(w.text)}"</p>
-            </div>
-        `).join("");
-    }
-
-    function addBlessingToWall(name, text) {
-        const stored = JSON.parse(localStorage.getItem("wedding_wishes") || "[]");
-        stored.unshift({
-            name: name,
-            text: text,
-            time: "Just now"
+    const btnCopyUpi = document.getElementById("btnCopyUpi");
+    if (btnCopyUpi) {
+        btnCopyUpi.addEventListener("click", function () {
+            const upiId = "vk440231-1@oksbi";
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(upiId).then(function () {
+                    const originalHtml = btnCopyUpi.innerHTML;
+                    btnCopyUpi.innerHTML = '<i class="fas fa-check text-success mr-1"></i> Copied!';
+                    btnCopyUpi.classList.add("btn-success");
+                    btnCopyUpi.classList.remove("btn-outline-warning");
+                    setTimeout(function () {
+                        btnCopyUpi.innerHTML = originalHtml;
+                        btnCopyUpi.classList.remove("btn-success");
+                        btnCopyUpi.classList.add("btn-outline-warning");
+                    }, 2500);
+                }).catch(function () {
+                    prompt("Copy UPI ID:", upiId);
+                });
+            } else {
+                prompt("Copy UPI ID:", upiId);
+            }
         });
-        localStorage.setItem("wedding_wishes", JSON.stringify(stored));
-        renderWishes();
     }
-
-    function escapeHtml(str) {
-        return str.replace(/[&<>'"]/g, 
-            tag => ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                "'": '&#39;',
-                '"': '&quot;'
-            }[tag] || tag)
-        );
-    }
-
-    renderWishes();
 
     // -------------------------------------------------------------
     // 7. Wedding Photo Drive & Multi-Select Gallery Upload Helper

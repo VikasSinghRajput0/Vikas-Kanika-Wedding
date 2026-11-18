@@ -117,7 +117,7 @@
                 <a href="#venues" class="nav-item nav-link">Venues</a>
                 <a href="#traditions" class="nav-item nav-link">Himachali Traditions</a>
                 <a href="#memories" class="nav-item nav-link font-weight-bold text-warning"><i class="fas fa-camera text-warning mr-1"></i> Photo Drive</a>
-                <a href="#rsvp" class="nav-item nav-link">RSVP &amp; Blessings</a>
+                <a href="#rsvp" class="nav-item nav-link">RSVP &amp; Shagun 💰</a>
             </div>
         </div>
     </nav>
@@ -874,17 +874,17 @@
     </section>
     <!-- Wedding Memories & Photo Drive Section End -->
 
-    <!-- RSVP & Wishes Section Start -->
+    <!-- RSVP & Shagun Section Start -->
     <section class="container-fluid py-5" id="rsvp">
         <div class="container py-4">
             <div class="vedic-section-title text-center">
-                <span class="section-subtitle">Be Our Guest</span>
-                <h2>✨ R.S.V.P &amp; Blessings</h2>
+                <span class="section-subtitle">Be Our Guest • सगुन कॉर्नर</span>
+                <h2>✨ R.S.V.P &amp; Shagun 💰</h2>
                 <div class="traditional-divider">
-                    <i class="fas fa-envelope-open-text"></i>
+                    <i class="fas fa-gift"></i>
                 </div>
                 <p class="text-muted mt-2">
-                    Kindly grace the occasion with your family. Please confirm your attendance or send your warm wishes:
+                    Kindly grace the occasion with your family, or send your digital Shagun &amp; blessings:
                 </p>
             </div>
 
@@ -950,18 +950,54 @@
                     </div>
                 </div>
 
-                <!-- Wishes Wall -->
+                <!-- Digital Shagun (GPay / UPI) Corner -->
                 <div class="col-lg-5 mb-4">
-                    <div class="bg-white rounded p-4 border shadow-sm h-100">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="font-weight-bold text-dark m-0"><i class="fas fa-heart text-danger mr-2"></i> Wishes Wall</h4>
-                            <span class="badge badge-warning text-dark font-weight-bold">Live Blessings</span>
+                    <div class="shagun-corner-card p-4 h-100 text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <span class="badge badge-warning text-dark font-weight-bold px-3 py-1 rounded-pill" style="font-size: 12px; letter-spacing: 1px;">
+                                    💰 डिजिटल सगुन कॉर्नर • Digital Shagun
+                                </span>
+                            </div>
+
+                            <h4 class="font-weight-bold text-danger mb-2" style="font-size: 1.35rem; line-height: 1.4;">
+                                नही आना तो देना पड़ेगा, नही तो नो लगान! 😜😂
+                            </h4>
+
+                            <p class="text-secondary mb-3" style="font-size: 13.5px; line-height: 1.55;">
+                                "शादी में आ रहे हो तो आपका दिल से स्वागत है! ❤️ और अगर किसी कारण नहीं आ पा रहे... तो बहाने बिल्कुल नहीं चलेंगे boss! सगुन तो देना ही पड़ेगा, नहीं तो नो लगान! 💸🎁"
+                            </p>
+
+                            <!-- GPay / PhonePe / UPI QR Code Scanner -->
+                            <div class="shagun-qr-wrap my-2">
+                                <img src="img/gpay-shagun-qr.png" alt="Scan to Send Shagun via GPay UPI" class="img-fluid rounded" style="width: 165px; height: 165px;">
+                                <div class="mt-2 font-weight-bold text-dark" style="font-size: 12px;">
+                                    <i class="fas fa-qrcode text-danger mr-1"></i> Scan with GPay, PhonePe, Paytm or Any UPI
+                                </div>
+                            </div>
+
+                            <!-- UPI ID Display & Copy -->
+                            <div class="my-3">
+                                <div class="upi-id-pill shadow-sm mb-2">
+                                    <i class="fas fa-wallet text-warning"></i>
+                                    <span>vk440231-1@oksbi</span>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-outline-warning text-dark font-weight-bold rounded-pill px-3 py-1 shadow-sm" id="btnCopyUpi" title="Click to copy UPI ID">
+                                        <i class="far fa-copy mr-1"></i> Copy UPI ID
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-muted small mb-3">
-                            Heartfelt wishes from friends, relatives, and well-wishers:
-                        </p>
-                        <div id="wishesContainer" style="max-height: 400px; overflow-y: auto; padding-right: 5px;">
-                            <!-- Wishes rendered dynamically by JS -->
+
+                        <div>
+                            <!-- Mobile Direct Pay Link -->
+                            <a href="upi://pay?pa=vk440231-1@oksbi&pn=Vikas%20Kumar&cu=INR&tn=Wedding%20Shagun%20Vikas%20Kanika" class="btn btn-success btn-block py-2 font-weight-bold rounded-pill shadow-sm mb-2">
+                                <i class="fas fa-mobile-alt mr-2"></i> Tap to Pay via UPI App (GPay/PhonePe)
+                            </a>
+                            <small class="text-muted d-block" style="font-size: 11.5px; font-style: italic;">
+                                "₹101, ₹501, ₹1100, ₹2100... आपकी श्रद्धा, हमारा सगुन! 🙏✨"
+                            </small>
                         </div>
                     </div>
                 </div>
