@@ -401,37 +401,4 @@ document.addEventListener("DOMContentLoaded", function () {
             if (selectedThumbnails) selectedThumbnails.innerHTML = "";
         });
     }
-
-    // -------------------------------------------------------------
-    // 8. Couple Display Toggle (Royal Vivah Crest vs Real Photo)
-    // -------------------------------------------------------------
-    const coupleDisplayImg = document.getElementById("coupleDisplayImg");
-    const btnShowCrest = document.getElementById("btnShowCrest");
-    const btnShowRealPhoto = document.getElementById("btnShowRealPhoto");
-
-    if (btnShowCrest && btnShowRealPhoto && coupleDisplayImg) {
-        btnShowCrest.addEventListener("click", function () {
-            coupleDisplayImg.style.opacity = "0.2";
-            setTimeout(function () {
-                coupleDisplayImg.src = "img/royal-vivah-crest.png";
-                coupleDisplayImg.alt = "Auspicious Shubh Vivah Royal Crest";
-                coupleDisplayImg.style.borderRadius = "50%";
-                coupleDisplayImg.style.opacity = "1";
-            }, 150);
-            btnShowCrest.className = "btn btn-sm btn-warning text-dark font-weight-bold rounded-pill px-3 py-1 mr-1 mb-1 active";
-            btnShowRealPhoto.className = "btn btn-sm btn-outline-light font-weight-bold rounded-pill px-3 py-1 mb-1";
-        });
-
-        btnShowRealPhoto.addEventListener("click", function () {
-            coupleDisplayImg.style.opacity = "0.2";
-            setTimeout(function () {
-                coupleDisplayImg.src = "img/couple-real.jpg";
-                coupleDisplayImg.alt = "Vikas & Kanika - Real Couple Photo";
-                coupleDisplayImg.style.borderRadius = "14px";
-                coupleDisplayImg.style.opacity = "1";
-            }, 150);
-            btnShowRealPhoto.className = "btn btn-sm btn-warning text-dark font-weight-bold rounded-pill px-3 py-1 mb-1 active";
-            btnShowCrest.className = "btn btn-sm btn-outline-light font-weight-bold rounded-pill px-3 py-1 mr-1 mb-1";
-        });
-    }
 });
