@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const rsvpDetails = `Namaste! 🙏\n\n*Wedding RSVP for Kanika & Vikas (Feb 2027)*\n*Guest Name:* ${name}\n*Phone:* ${phone || 'N/A'}\n*Attending as:* ${side}\n*Number of Guests:* ${guests}\n*Message / Blessings:* ${message || 'Best wishes to the couple!'}`;
 
             const encoded = encodeURIComponent(rsvpDetails);
-            const waUrl = `https://wa.me/?text=${encoded}`;
+            const waUrl = `https://wa.me/918219877037?text=${encoded}`;
             window.open(waUrl, '_blank');
 
             if (message) {
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
         directWaBtn.addEventListener("click", function (e) {
             e.preventDefault();
             const text = encodeURIComponent("Namaste! 🙏 We received your wedding invitation for Kanika & Vikas's wedding (Feb 2027, Hamirpur H.P.). Hearty congratulations and blessings to both families!");
-            window.open(`https://wa.me/?text=${text}`, '_blank');
+            window.open(`https://wa.me/918219877037?text=${text}`, '_blank');
         });
     }
 
