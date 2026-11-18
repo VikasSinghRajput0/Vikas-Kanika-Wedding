@@ -28,7 +28,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--cream-bg);
     color: #3e2723;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .font-sanskrit, .shloka-text {
@@ -158,12 +158,13 @@ body {
 /* Sticky Navbar - Always Visible & Elegant */
 .navbar {
     display: flex !important;
+    position: -webkit-sticky !important;
     position: sticky !important;
     top: 0 !important;
-    z-index: 1030 !important;
+    z-index: 1040 !important;
     background: #46080d !important;
     border-bottom: 2px solid var(--turmeric-gold) !important;
-    transition: all 0.3s ease !important;
+    transition: background 0.3s ease, box-shadow 0.3s ease !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
@@ -171,6 +172,11 @@ body {
 .navbar.navbar-scrolled {
     background: rgba(45, 5, 9, 0.98) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Ensure text-secondary has high contrast and is readable */
+.text-secondary {
+    color: #444444 !important;
 }
 
 .navbar .nav-link {
@@ -1081,7 +1087,7 @@ body.mode-minimalist .royal-footer {
    MOBILE & TABLET RESPONSIVENESS (PERFECT FIT ON ALL SCREENS)
    ========================================================================== */
 html, body {
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
     width: 100% !important;
     max-width: 100vw !important;
 }
