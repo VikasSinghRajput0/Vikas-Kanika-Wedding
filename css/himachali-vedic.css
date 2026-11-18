@@ -1,0 +1,1078 @@
+/* ==========================================================================
+   Himachali & Royal Vedic Wedding Theme Stylesheet
+   For Kanika & Vikas Wedding (Hamirpur, Himachal Pradesh)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Rozha+One&family=Yatra+One&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Royal Vedic Himachali Palette */
+    --royal-maroon: #7c141d;
+    --royal-maroon-dark: #4a090e;
+    --royal-crimson: #9e1b26;
+    --saffron-orange: #e66a1f;
+    --turmeric-gold: #e5a93b;
+    --antique-gold: #c69234;
+    --gold-gradient: linear-gradient(135deg, #f7d070 0%, #c69234 50%, #9e6f1f 100%);
+    --gold-text-gradient: linear-gradient(135deg, #d4af37, #f3e5ab, #aa7c11);
+    --cream-bg: #fffbf3;
+    --card-bg: #ffffff;
+    --himachal-pine: #234d3d;
+    --himachal-dhaam-copper: #b85d19;
+    --soft-border: rgba(198, 146, 52, 0.35);
+    --shadow-regal: 0 10px 30px rgba(124, 20, 29, 0.12);
+}
+
+/* Base & Typography */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream-bg);
+    color: #3e2723;
+    overflow-x: hidden;
+}
+
+.font-sanskrit, .shloka-text {
+    font-family: 'Rozha One', 'Yatra One', serif;
+    letter-spacing: 0.5px;
+}
+
+.font-regal {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.font-classic {
+    font-family: 'Marcellus', serif;
+}
+
+/* ==========================================================================
+   HEADER & NAVBAR PERFECTION
+   ========================================================================== */
+
+/* Top Theme Switcher Bar (Natural Flow, Not Sticky) */
+.theme-switch-container {
+    background: linear-gradient(90deg, #3d0509, #580c13, #3d0509);
+    color: #fcebd2;
+    padding: 10px 20px;
+    font-size: 13.5px;
+    border-bottom: 1.5px solid rgba(229, 169, 59, 0.4);
+    position: relative;
+    z-index: 20;
+}
+
+.theme-pill-btn {
+    border: 1px solid var(--turmeric-gold);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.theme-pill-btn.active, .theme-pill-btn:hover {
+    background: var(--turmeric-gold);
+    color: var(--royal-maroon-dark);
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(229, 169, 59, 0.4);
+}
+
+/* Auspicious Vedic Top Banner */
+.vedic-hero-banner {
+    background: radial-gradient(circle at center, #6b0f17 0%, #3a060a 100%);
+    color: #fff;
+    padding: 35px 20px 30px;
+    text-align: center;
+    border-bottom: 3px solid var(--turmeric-gold);
+    position: relative;
+    box-shadow: inset 0 -10px 30px rgba(0,0,0,0.4);
+}
+
+.vedic-hero-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: radial-gradient(#d4af37 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    pointer-events: none;
+}
+
+.om-symbol {
+    font-size: 34px;
+    color: #ffd874;
+    display: inline-block;
+    filter: drop-shadow(0 0 10px rgba(255, 216, 116, 0.7));
+    font-family: 'Rozha One', 'Yatra One', serif;
+    animation: pulse-gold 2.5s infinite alternate;
+}
+
+@keyframes pulse-gold {
+    0% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(255, 216, 116, 0.4)); }
+    100% { transform: scale(1.05); filter: drop-shadow(0 0 16px rgba(255, 216, 116, 0.8)); }
+}
+
+.shloka-box {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px dashed rgba(255, 216, 116, 0.55);
+    border-radius: 14px;
+    padding: 18px 24px;
+    max-width: 820px;
+    margin: 16px auto;
+    backdrop-filter: blur(4px);
+}
+
+.shloka-sanskrit {
+    font-size: 21px;
+    line-height: 1.6;
+    color: #ffe6a3;
+    font-weight: 600;
+}
+
+.shloka-meaning {
+    font-size: 13.5px;
+    color: #f7d8c0;
+    font-style: italic;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.himachali-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 216, 116, 0.18);
+    border: 1px solid var(--turmeric-gold);
+    color: #ffd874;
+    padding: 5px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Sticky Navbar - Always Visible & Elegant */
+.navbar {
+    display: flex !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1030 !important;
+    background: #46080d !important;
+    border-bottom: 2px solid var(--turmeric-gold) !important;
+    transition: all 0.3s ease !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.navbar.navbar-scrolled {
+    background: rgba(45, 5, 9, 0.98) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+.navbar .nav-link {
+    color: #f7eed9 !important;
+    font-weight: 500;
+    font-size: 14.5px;
+    letter-spacing: 0.5px;
+    padding: 18px 16px !important;
+    transition: all 0.25s ease;
+}
+
+.navbar .nav-link:hover, .navbar .nav-link.active {
+    color: #ffd874 !important;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar-brand h1, .navbar-brand h2 {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   FLOATING MUSIC PLAYER: "Tera Mera Lagan" (तेरा मेरा लग्न)
+   ========================================================================== */
+.floating-music-bar {
+    position: fixed;
+    bottom: 22px;
+    left: 22px;
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #46080d, #7c141d);
+    border: 2px solid #ffd874;
+    border-radius: 50px;
+    padding: 8px 18px 8px 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: calc(100vw - 44px);
+    text-decoration: none !important;
+}
+
+.floating-music-bar:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(229, 169, 59, 0.5);
+    color: #fff;
+}
+
+.music-disc-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #250205;
+    border: 2px solid #ffd874;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #ffd874;
+    flex-shrink: 0;
+}
+
+.music-disc-icon.playing {
+    animation: discSpin 2.5s linear infinite;
+}
+
+@keyframes discSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    text-align: left;
+}
+
+.music-title {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #ffd874;
+    white-space: nowrap;
+}
+
+.music-subtitle {
+    font-size: 11px;
+    color: #f7eed9;
+    opacity: 0.9;
+    white-space: nowrap;
+}
+
+.music-play-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffd874;
+    color: #46080d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 13px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.music-play-btn:hover {
+    transform: scale(1.1);
+}
+
+.music-status-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(255, 216, 116, 0.25);
+    color: #ffd874;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+/* Prompt Banner for Autoplay interaction */
+.audio-click-hint {
+    font-size: 11px;
+    color: #ffd874;
+    background: rgba(0,0,0,0.6);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-left: 6px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.himachali-hero {
+    position: relative;
+    background: linear-gradient(180deg, rgba(58, 6, 10, 0.88) 0%, rgba(124, 20, 29, 0.76) 50%, rgba(58, 6, 10, 0.94) 100%), url('../img/carousel-1.jpg') center/cover no-repeat;
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 70px 20px 80px;
+    overflow: hidden;
+}
+
+.himachali-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: repeating-linear-gradient(45deg, #c69234, #c69234 10px, #7c141d 10px, #7c141d 20px);
+    opacity: 0.85;
+}
+
+.couple-names-title {
+    font-family: 'Rozha One', 'Cinzel', serif;
+    font-size: 3.6rem;
+    color: #fff;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+    margin: 15px 0;
+}
+
+.couple-names-title span {
+    color: #ffc44d;
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.2rem;
+    padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .couple-names-title {
+        font-size: 2.2rem;
+    }
+    .couple-names-title span {
+        font-size: 2.6rem;
+    }
+    .vedic-hero-banner {
+        padding: 25px 12px 20px;
+    }
+    .shloka-sanskrit {
+        font-size: 17px;
+    }
+    .floating-music-bar {
+        left: 12px;
+        bottom: 15px;
+        padding: 6px 12px 6px 8px;
+    }
+    .music-title {
+        font-size: 12px;
+    }
+    .music-subtitle {
+        font-size: 10px;
+    }
+}
+
+/* Countdown Clock */
+.countdown-container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 216, 116, 0.45);
+    border-radius: 16px;
+    padding: 20px 15px;
+    max-width: 650px;
+    margin: 25px auto 0;
+}
+
+.countdown-box {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 5px;
+    background: rgba(30, 4, 6, 0.75);
+    border: 1.5px solid var(--turmeric-gold);
+    border-radius: 10px;
+    min-width: 88px;
+}
+
+.countdown-num {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffd874;
+    line-height: 1;
+    font-family: 'Cinzel', serif;
+}
+
+.countdown-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #f7eed9;
+    margin-top: 5px;
+}
+
+/* Traditional Himachali Section Headers */
+.vedic-section-title {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.vedic-section-title .section-subtitle {
+    color: var(--saffron-orange);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.vedic-section-title h2 {
+    font-family: 'Cinzel', 'Rozha One', serif;
+    font-weight: 700;
+    color: var(--royal-maroon);
+    font-size: 2.4rem;
+    margin-top: 5px;
+}
+
+.traditional-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.traditional-divider::before, .traditional-divider::after {
+    content: "";
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(to right, transparent, var(--antique-gold));
+}
+
+.traditional-divider::after {
+    background: linear-gradient(to left, transparent, var(--antique-gold));
+}
+
+.traditional-divider i {
+    color: var(--saffron-orange);
+    font-size: 18px;
+}
+
+/* Couple Cards */
+.couple-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(124, 20, 29, 0.08);
+    border: 2px solid #f2e2c4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.couple-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(124, 20, 29, 0.16);
+    border-color: var(--turmeric-gold);
+}
+
+.couple-card-header {
+    background: linear-gradient(135deg, #7c141d, #9e1b26);
+    color: #fff;
+    padding: 22px 20px;
+    position: relative;
+}
+
+.couple-card-header::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 10px solid #9e1b26;
+}
+
+.couple-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid var(--turmeric-gold);
+    margin: 0 auto;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background: #fff8eb;
+}
+
+.parents-box {
+    background: #fdf8ef;
+    border: 1px solid #fae8c6;
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 15px;
+}
+
+/* Itinerary Tabs & Cards */
+.itinerary-nav-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.itinerary-pill {
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 1.5px solid var(--antique-gold);
+    background: #fff;
+    color: var(--royal-maroon);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.itinerary-pill.active, .itinerary-pill:hover {
+    background: linear-gradient(135deg, var(--royal-maroon), var(--royal-crimson));
+    color: #ffd874;
+    border-color: var(--royal-maroon);
+    box-shadow: 0 4px 12px rgba(124, 20, 29, 0.25);
+}
+
+/* ==========================================================================
+   ROYAL RITUALS & CELEBRATIONS ENHANCED DESIGN
+   ========================================================================== */
+.ritual-card {
+    background: #ffffff;
+    border: 1px solid #fae4c0;
+    border-top: 4px solid var(--antique-gold);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(124, 20, 29, 0.07);
+    position: relative;
+    transition: all 0.35s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ritual-card:hover {
+    border-top-color: var(--royal-maroon);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(124, 20, 29, 0.16);
+    border-color: var(--turmeric-gold);
+}
+
+.ritual-card.highlight-ritual {
+    border: 2px solid var(--turmeric-gold);
+    border-top: 5px solid var(--royal-maroon);
+    background: linear-gradient(180deg, #fffcf7 0%, #ffffff 100%);
+    box-shadow: 0 10px 30px rgba(198, 146, 52, 0.2);
+}
+
+.ritual-card .ritual-icon-bubble {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fdf4e2, #fbe7c3);
+    border: 2px solid var(--turmeric-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--royal-maroon);
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.ritual-card .ritual-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--royal-maroon), #9e1b26);
+    color: #ffd874;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.ritual-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff4de;
+    border: 1px solid #ffd899;
+    color: #943a08;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.ritual-location-tag {
+    font-size: 13px;
+    color: #5d4037;
+    background: #fbf6ec;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-top: 12px;
+}
+
+/* Royal Monogram for Bride and Groom Cards */
+.monogram-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background: radial-gradient(circle at center, #7c141d 0%, #4a090e 100%);
+    border: 4px solid var(--turmeric-gold);
+    box-shadow: 0 8px 25px rgba(124, 20, 29, 0.25), 0 0 15px rgba(229, 169, 59, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffd874;
+    font-size: 42px;
+    font-family: 'Rozha One', 'Cinzel', serif;
+    position: relative;
+}
+
+.monogram-circle::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed rgba(255, 216, 116, 0.5);
+    border-radius: 50%;
+}
+
+/* Full Song Modal / Drawer */
+.music-drawer-modal .modal-content {
+    background: #3d0509;
+    border: 2px solid var(--turmeric-gold);
+    border-radius: 16px;
+    color: #fff;
+}
+
+.music-drawer-modal .modal-header {
+    border-bottom: 1px solid rgba(229, 169, 59, 0.3);
+}
+
+/* Venue Cards */
+.venue-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #edd5b0;
+    padding: 30px 25px;
+    box-shadow: var(--shadow-regal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.venue-card.bride-venue {
+    border-top: 6px solid #e66a1f;
+}
+
+.venue-card.groom-venue {
+    border-top: 6px solid #7c141d;
+}
+
+.venue-icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--saffron-orange);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Himachali Cultural Highlights Section */
+.himachali-tradition-section {
+    background: linear-gradient(135deg, #fdf8ee 0%, #faefe0 100%);
+    border-top: 2px dashed #e3c494;
+    border-bottom: 2px dashed #e3c494;
+    padding: 60px 0;
+}
+
+.tradition-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px;
+    border: 1px solid #f0debe;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    height: 100%;
+}
+
+.tradition-icon {
+    font-size: 32px;
+    color: var(--saffron-orange);
+    margin-bottom: 12px;
+}
+
+/* RSVP & Wishes */
+.rsvp-section-wrap {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    border: 2px solid #fae4c2;
+    box-shadow: var(--shadow-regal);
+}
+
+.btn-whatsapp-rsvp {
+    background: #25D366;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 12px 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s;
+}
+
+.btn-whatsapp-rsvp:hover {
+    background: #20ba5a;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    text-decoration: none;
+}
+
+.btn-royal-primary {
+    background: linear-gradient(135deg, var(--royal-maroon), var(--royal-crimson));
+    color: #ffd874;
+    border: 1px solid var(--turmeric-gold);
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 12px 30px;
+    transition: all 0.3s;
+}
+
+.btn-royal-primary:hover {
+    background: linear-gradient(135deg, #4a090e, var(--royal-maroon));
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(124, 20, 29, 0.35);
+}
+
+/* Wishes Wall */
+.wishes-card {
+    background: #fffbf0;
+    border: 1px solid #fae6c3;
+    border-radius: 12px;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+}
+
+.wishes-author {
+    font-weight: 700;
+    color: var(--royal-maroon);
+    font-size: 14px;
+}
+
+.wishes-time {
+    font-size: 11px;
+    color: #8c7365;
+}
+
+/* Footer & Compliments */
+.royal-footer {
+    background: #330508;
+    color: #f7e8d6;
+    padding: 60px 15px 30px;
+    border-top: 4px solid var(--turmeric-gold);
+    position: relative;
+}
+
+.compliments-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 216, 116, 0.4);
+    border-radius: 14px;
+    padding: 25px;
+    max-width: 750px;
+    margin: 25px auto;
+}
+
+/* ==========================================================================
+   PHOTO SHOWCASE & INVITATION CARD STYLES
+   ========================================================================== */
+.royal-card-showcase {
+    position: relative;
+    max-width: 400px;
+    margin: 15px auto;
+    border-radius: 18px;
+    padding: 8px;
+    background: linear-gradient(135deg, #ffd874 0%, #c69234 50%, #9e6f1f 100%);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(229, 169, 59, 0.45);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.royal-card-showcase:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.7), 0 0 45px rgba(229, 169, 59, 0.6);
+}
+
+.royal-invitation-img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.invitation-badge-top {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #7c141d, #9e1b26);
+    color: #ffd874;
+    border: 1.5px solid #ffd874;
+    border-radius: 20px;
+    padding: 4px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 5;
+}
+
+.couple-romance-wrap {
+    background: #ffffff;
+    border: 2px solid #edd5b0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(124, 20, 29, 0.08);
+    margin-top: 35px;
+}
+
+.couple-together-img {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    object-fit: cover;
+    border-radius: 16px 0 0 16px;
+}
+
+@media (max-width: 991px) {
+    .couple-together-img {
+        border-radius: 16px 16px 0 0;
+        min-height: 300px;
+    }
+}
+
+.view-card-btn {
+    background: linear-gradient(135deg, #c69234, #e5a93b);
+    color: #3d0509;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 13px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.view-card-btn:hover {
+    transform: translateY(-2px);
+    color: #220204;
+    box-shadow: 0 6px 20px rgba(229, 169, 59, 0.5);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   THEME 2: MODERN MINIMALIST & ELEGANT STYLE OVERRIDES
+   ========================================================================== */
+body.mode-minimalist {
+    background-color: #fcfbfa;
+    color: #333333;
+}
+
+body.mode-minimalist .vedic-hero-banner {
+    background: #252e33;
+    border-bottom: 2px solid #c29d59;
+}
+
+body.mode-minimalist .navbar {
+    background: #1e262a !important;
+    border-bottom: 2px solid #c29d59 !important;
+}
+
+body.mode-minimalist .himachali-hero {
+    background: linear-gradient(180deg, rgba(28, 36, 41, 0.88) 0%, rgba(47, 53, 66, 0.82) 100%), url('../img/carousel-1.jpg') center/cover no-repeat;
+}
+
+body.mode-minimalist .couple-names-title {
+    font-family: 'Marcellus', 'Cinzel', serif;
+    letter-spacing: 2px;
+}
+
+body.mode-minimalist .couple-card-header {
+    background: linear-gradient(135deg, #2f3542, #57606f);
+}
+
+body.mode-minimalist .couple-card-header::after {
+    border-top-color: #57606f;
+}
+
+body.mode-minimalist .vedic-section-title h2 {
+    color: #2f3542;
+    font-family: 'Marcellus', serif;
+}
+
+body.mode-minimalist .ritual-card {
+    border-left: 5px solid #c29d59;
+}
+
+body.mode-minimalist .itinerary-pill.active {
+    background: #2f3542;
+    color: #f1f2f6;
+    border-color: #2f3542;
+}
+
+body.mode-minimalist .btn-royal-primary {
+    background: #2f3542;
+    color: #fff;
+    border-color: #2f3542;
+}
+
+body.mode-minimalist .royal-footer {
+    background: #182025;
+}
+
+/* ==========================================================================
+   PHOTO DRIVE & WEDDING MEMORIES SECTION
+   ========================================================================== */
+.photo-drive-section {
+    background: linear-gradient(180deg, #fffcf7 0%, #fdf5ea 100%);
+    border-top: 1px solid #fae2b8;
+    border-bottom: 1px solid #fae2b8;
+}
+
+.photo-drive-card {
+    background: #ffffff;
+    border: 2px solid #e8c68a;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(124, 20, 29, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-drive-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(124, 20, 29, 0.12);
+}
+
+.drive-icon-badge {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c141d 0%, #500a10 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(124, 20, 29, 0.25);
+    flex-shrink: 0;
+}
+
+.multi-select-box {
+    background: #fffbf2;
+    border: 1.5px dashed #c69234;
+    border-radius: 12px;
+}
+
+.photo-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid #fae2b8;
+    border-radius: 8px;
+}
+
+.photo-preview-item {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e0d0b0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.photo-preview-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.step-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #7c141d;
+    color: #ffd874;
+    font-weight: bold;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+/* Floating Music Bar Pulse Glow for when audio is waiting to be started */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+        border-color: #ffd874;
+    }
+    50% {
+        box-shadow: 0 0 22px rgba(255, 216, 116, 0.95);
+        border-color: #ffffff;
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+        border-color: #ffd874;
+    }
+}
+
+.floating-music-bar.pulse-glow {
+    animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+.photo-drive-card p,
+.photo-drive-card .drive-desc {
+    color: #444444 !important;
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+.drive-icon-badge {
+    color: #ffd874 !important;
+}
+
+.drive-icon-badge i {
+    color: #ffd874 !important;
+    font-size: 24px;
+}

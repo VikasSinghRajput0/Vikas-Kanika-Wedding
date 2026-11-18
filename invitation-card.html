@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Wedding Invitation - Vikas & Kanika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Marcellus&family=Poppins:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfaf3;
+            color: #3b0609;
+        }
+
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 12mm 14mm;
+            position: relative;
+            background: #fdfaf3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Outer & Inner Royal Gold Borders */
+        .royal-border-wrap {
+            border: 4px solid #c69234;
+            padding: 4px;
+            height: 100%;
+            background: #fffcf7;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: inset 0 0 20px rgba(198, 146, 52, 0.15);
+        }
+
+        .inner-border {
+            border: 1.5px dashed #b8860b;
+            padding: 16px 20px;
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        /* Header Invocation */
+        .om-header {
+            font-size: 26px;
+            color: #7c141d;
+            font-family: 'Rozha One', serif;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .shloka-text {
+            font-family: 'Rozha One', serif;
+            font-size: 14.5px;
+            line-height: 1.5;
+            color: #8c1d25;
+            margin: 4px 0 6px;
+        }
+
+        .blessing-quote {
+            font-size: 11px;
+            color: #555;
+            font-style: italic;
+            max-width: 90%;
+            margin: 0 auto 10px;
+        }
+
+        .vivah-tag {
+            display: inline-block;
+            background: #7c141d;
+            color: #ffd874;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 3px 18px;
+            border-radius: 20px;
+            border: 1px solid #ffd874;
+            text-transform: uppercase;
+        }
+
+        /* Couple Section */
+        .couple-title {
+            font-family: 'Cinzel', 'Rozha One', serif;
+            font-size: 34px;
+            font-weight: 800;
+            color: #7c141d;
+            margin: 8px 0 4px;
+            letter-spacing: 1.5px;
+        }
+
+        .couple-title span {
+            font-family: 'Great Vibes', cursive;
+            color: #c69234;
+            font-size: 38px;
+            font-weight: normal;
+            padding: 0 8px;
+        }
+
+        .wedding-date-banner {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #7c141d, #a51d28, #7c141d);
+            padding: 5px 20px;
+            border-radius: 4px;
+            display: inline-block;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            border: 1px solid #ffd874;
+        }
+
+        /* Middle Grid: Photo & Parents Info */
+        .middle-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .family-box {
+            flex: 1;
+            background: #fff8ee;
+            border: 1px solid #fae1b8;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 11px;
+        }
+
+        .family-box.bride-box {
+            border-left: 4px solid #e66a1f;
+        }
+
+        .family-box.groom-box {
+            border-left: 4px solid #7c141d;
+        }
+
+        .family-role {
+            font-size: 10px;
+            font-weight: 700;
+            color: #b85d19;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .family-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #7c141d;
+            margin-bottom: 3px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .family-parents {
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 2px;
+        }
+
+        .family-residence {
+            color: #666;
+            font-size: 10px;
+        }
+
+        .couple-photo-center {
+            width: 140px;
+            height: 170px;
+            border: 3px solid #c69234;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        .couple-photo-center img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Itinerary Table */
+        .itinerary-section {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #7c141d;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .section-heading::before, .section-heading::after {
+            content: "";
+            height: 1px;
+            width: 40px;
+            background: #c69234;
+        }
+
+        .rituals-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10.5px;
+        }
+
+        .rituals-table th {
+            background: #7c141d;
+            color: #ffd874;
+            padding: 5px 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid #7c141d;
+            text-align: left;
+        }
+
+        .rituals-table td {
+            padding: 5.5px 8px;
+            border: 1px solid #ecd8ba;
+            vertical-align: middle;
+        }
+
+        .rituals-table tr:nth-child(even) {
+            background: #fdf7ec;
+        }
+
+        .event-highlight {
+            font-weight: 700;
+            color: #7c141d;
+        }
+
+        .time-highlight {
+            font-weight: 700;
+            color: #b85d19;
+            white-space: nowrap;
+        }
+
+        /* Venues Section */
+        .venues-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .venue-card-pdf {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #e8d0af;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 10px;
+        }
+
+        .venue-card-pdf h5 {
+            margin: 0 0 3px;
+            font-size: 11px;
+            color: #7c141d;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .venue-card-pdf p {
+            margin: 0;
+            color: #444;
+            line-height: 1.35;
+        }
+
+        /* Footer & Compliments */
+        .pdf-footer {
+            border-top: 1px solid #e0c89e;
+            padding-top: 8px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .compliments-title {
+            color: #b85d19;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .compliments-names {
+            font-weight: 600;
+            color: #7c141d;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .final-quote {
+            font-style: italic;
+            color: #666;
+            font-size: 9.5px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="royal-border-wrap">
+            <div class="inner-border">
+                
+                <!-- 1. Sacred Vedic Invocation Header -->
+                <div>
+                    <div class="om-header">🔱 || ॐ श्री गणेशाय नमः || 🔱</div>
+                    <div class="shloka-text">
+                        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+                    </div>
+                    <div class="blessing-quote">
+                        "With the divine blessings of Late Grandparents and Ancestors, we cordially invite you to witness the sacred union of our children."
+                    </div>
+                    <div>
+                        <span class="vivah-tag">🌟 The Auspicious Vivah • शुभ विवाह 🌟</span>
+                    </div>
+
+                    <!-- 2. Couple Titles & Wedding Date -->
+                    <div class="couple-title">
+                        KANIKA <span>&</span> VIKAS
+                    </div>
+                    <div class="wedding-date-banner">
+                        FEBRUARY 01 - 03, 2027 • HAMIRPUR, HIMACHAL PRADESH
+                    </div>
+                </div>
+
+                <!-- 3. Middle Section: Bride, Couple Wedding Portrait, Groom -->
+                <div class="middle-grid">
+                    <!-- Bride Info -->
+                    <div class="family-box bride-box">
+                        <div class="family-role">🌸 वधुपक्ष • The Bride</div>
+                        <div class="family-name">KANIKA</div>
+                        <div class="family-parents">Beloved Daughter of:</div>
+                        <div style="font-weight: 700; color: #333;">Smt. Taro Devi &amp; Sh. Kuldeep Singh</div>
+                        <div class="family-residence">Village Dugha Kalan, P.O. Dugha, Hamirpur, H.P.</div>
+                    </div>
+
+                    <!-- Couple Portrait in Wedding Dress -->
+                    <div class="couple-photo-center">
+                        <img src="img/couple-wedding-dress.jpg" alt="Vikas & Kanika in Wedding Dress">
+                    </div>
+
+                    <!-- Groom Info -->
+                    <div class="family-box groom-box">
+                        <div class="family-role">👑 वरपक्ष • The Groom</div>
+                        <div class="family-name">VIKAS</div>
+                        <div class="family-parents">Beloved Son of:</div>
+                        <div style="font-weight: 700; color: #333;">👑 Smt. Sheela Devi &amp; Sh. Suresh Kumar</div>
+                        <div class="family-residence">VPO Gahli, Tehsil Galore, Hamirpur, H.P.</div>
+                    </div>
+                </div>
+
+                <!-- 4. The Sacred Rituals & Celebrations Schedule -->
+                <div class="itinerary-section">
+                    <div class="section-heading">📅 The Auspicious Wedding Rituals</div>
+                    <table class="rituals-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 23%;">Date &amp; Day</th>
+                                <th style="width: 20%;">Time</th>
+                                <th style="width: 32%;">Ritual Ceremony</th>
+                                <th style="width: 25%;">Venue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mon, 01 Feb 2027</strong></td>
+                                <td class="time-highlight">07:00 PM onwards</td>
+                                <td class="event-highlight">Mehndi &amp; Sangeet (मेहंदी एवं संगीत)</td>
+                                <td>Respective Residences</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tue, 02 Feb 2027</strong></td>
+                                <td class="time-highlight">10:00 AM</td>
+                                <td class="event-highlight">Haldi Rasam (शुभ हल्दी रस्म)</td>
+                                <td>Respective Residences</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tue, 02 Feb 2027</strong></td>
+                                <td class="time-highlight">03:00 PM</td>
+                                <td class="event-highlight">Sehra Bandi (शाही सेहरा बंदी)</td>
+                                <td>Groom's Home (Gahli)</td>
+                            </tr>
+                            <tr style="background: #fff2f3;">
+                                <td><strong>Tue, 02 Feb 2027</strong></td>
+                                <td class="time-highlight" style="color: #7c141d;">08:00 PM onwards</td>
+                                <td class="event-highlight" style="color: #7c141d;">Grand Jai Mala &amp; Barat Arrival (जय माला)</td>
+                                <td>Wedding Venue (Dugha Kalan)</td>
+                            </tr>
+                            <tr style="background: #fff8ea;">
+                                <td><strong>Tue, 02 Feb 2027</strong></td>
+                                <td class="time-highlight" style="color: #b85d19;">10:00 PM</td>
+                                <td class="event-highlight" style="color: #b85d19;">Sacred Pheras &amp; Vedic Lagan (पवित्र फेरे)</td>
+                                <td>Wedding Venue (Dugha Kalan)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wed, 03 Feb 2027</strong></td>
+                                <td class="time-highlight">07:00 AM</td>
+                                <td class="event-highlight">Bidai &amp; Vadhu Pravesh (विदाई समारोह)</td>
+                                <td>Dugha Kalan &amp; Gahli</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 5. Celebration Venues -->
+                <div>
+                    <div class="section-heading">📍 Celebration Venues (शुभ स्थल)</div>
+                    <div class="venues-container">
+                        <div class="venue-card-pdf" style="border-top: 3px solid #e66a1f;">
+                            <h5>🌸 Vadhupaksha Venue (Bride)</h5>
+                            <p><strong>Village Dugha Kalan</strong>, P.O. Dugha, Hamirpur, Himachal Pradesh</p>
+                            <p style="font-size: 9px; color: #777; margin-top: 2px;">Hosting: Mehndi, Haldi, Jai Mala, Vedic Lagan &amp; Bidai</p>
+                        </div>
+                        <div class="venue-card-pdf" style="border-top: 3px solid #7c141d;">
+                            <h5>👑 Varapaksha Venue (Groom)</h5>
+                            <p><strong>VPO Gahli</strong>, Tehsil Galore, Hamirpur, Himachal Pradesh</p>
+                            <p style="font-size: 9px; color: #777; margin-top: 2px;">Hosting: Mehndi &amp; Sangeet, Haldi, Sehra Bandi &amp; Barat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Best Compliments & Family Regards -->
+                <div class="pdf-footer">
+                    <div class="compliments-title">✨ With Best Compliments From ✨</div>
+                    <div class="compliments-names">
+                        Sh. Kuldeep Singh &amp; Smt. Taro Devi &nbsp;•&nbsp; Sh. Suresh Kumar &amp; Smt. Sheela Devi
+                    </div>
+                    <div style="font-weight: 600; color: #444; font-size: 10px;">
+                        &amp; All Relatives, Friends and Well-Wishers
+                    </div>
+                    <div style="margin-top: 3px; font-weight: 700; color: #7c141d; font-size: 11px;">
+                        Warm Regards: The Singh &amp; Kumar Families
+                    </div>
+                    <div class="final-quote">
+                        "A lifelong promise wrapped in holy vows. Your gracious presence and blessings are our greatest gift."
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
