@@ -6,9 +6,14 @@
  * - Add to Calendar Helper (.ics & Google Calendar)
  * - Interactive FAQ Accordion
  * - Wedding Photo Drive & Multi-Select Gallery Upload Helper
+ * - Flower Petal Shower Animation (पुष्प वर्षा)
+ * - Native Web Share API / Copy Link Toast
+ * - Wedding Hashtag 1-Click Copy
+ * - Song Lyrics Modal
+ * - Offline Service Worker Registration
  */
 
-// Global HTML Escaping Utility (prevents XSS and ReferenceErrors)
+// Global HTML Escaping Utility
 function escapeHtml(str) {
     if (!str) return "";
     return String(str)
@@ -17,6 +22,96 @@ function escapeHtml(str) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+// Global Toast Notification System
+function showWeddingToast(message, icon) {
+    icon = icon || "✨";
+    let toast = document.getElementById("weddingToast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "weddingToast";
+        toast.className = "wedding-toast";
+        document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<span style="font-size: 16px;">${icon}</span> <span>${escapeHtml(message)}</span>`;
+    toast.classList.add("show");
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3200);
+}
+
+// Flower Petal Shower Animation (पुष्प वर्षा)
+function triggerPetalShower(count) {
+    count = count || 36;
+    let container = document.getElementById("petalShowerContainer");
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "petalShowerContainer";
+        container.className = "petal-shower-canvas";
+        document.body.appendChild(container);
+    }
+
+    const types = ["petal-rose", "petal-marigold", "petal-white"];
+    for (let i = 0; i < count; i++) {
+        const petal = document.createElement("div");
+        const type = types[Math.floor(Math.random() * types.length)];
+        petal.className = `petal-item ${type}`;
+
+        const size = Math.floor(Math.random() * 14) + 12; // 12px to 26px
+        petal.style.width = size + "px";
+        petal.style.height = (size * 1.35) + "px";
+        petal.style.left = (Math.random() * 100) + "vw";
+
+        const duration = (Math.random() * 2.5 + 3.5).toFixed(1); // 3.5s to 6.0s
+        const delay = (Math.random() * 1.5).toFixed(1);
+        petal.style.animationDuration = duration + "s";
+        petal.style.animationDelay = delay + "s";
+
+        container.appendChild(petal);
+        setTimeout(() => {
+            petal.remove();
+        }, (parseFloat(duration) + parseFloat(delay)) * 1000 + 400);
+    }
+}
+
+// Native Web Share or Copy Link Helper
+function shareWeddingWebsite() {
+    const shareUrl = window.location.href.split('#')[0];
+    const shareData = {
+        title: "Kanika & Vikas Wedding | Auspicious Vivah",
+        text: "With divine blessings of family and ancestors, cordially inviting you with family to celebrate the sacred marriage of Kanika & Vikas in Hamirpur, H.P. (01-03 Feb 2027).",
+        url: shareUrl
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+    } else {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showWeddingToast("Wedding invitation link copied to clipboard! 📋", "💍");
+            }).catch(() => {
+                prompt("Copy wedding website link:", shareUrl);
+            });
+        } else {
+            prompt("Copy wedding website link:", shareUrl);
+        }
+    }
+}
+
+// Copy Hashtag Helper
+function copyWeddingHashtag(tag) {
+    tag = tag || "#KanikaWedsVikas";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(tag).then(() => {
+            showWeddingToast(`Hashtag ${tag} copied to clipboard!`, "🏷️");
+        }).catch(() => {
+            showWeddingToast(`Tag: ${tag}`, "✨");
+        });
+    } else {
+        showWeddingToast(`Tag: ${tag}`, "✨");
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -133,6 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Toggle on floating music bar click
     if (musicBar) {
         musicBar.addEventListener("click", function (e) {
+            // Don't toggle music if user clicked lyrics button
+            if (e.target.closest("#btnSongLyrics")) return;
             e.preventDefault();
             toggleMusic();
         });
@@ -146,7 +243,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // -------------------------------------------------------------
-    // 2. Theme Switcher (Theme 1: Royal Vedic vs Theme 2: Minimalist)
+    // 2. Song Lyrics Modal
+    // -------------------------------------------------------------
+    const lyricsModal = document.getElementById("songLyricsModal");
+    const btnOpenLyrics = document.getElementById("btnSongLyrics");
+    const btnCloseLyrics = document.getElementById("btnCloseSongLyrics");
+
+    if (btnOpenLyrics && lyricsModal) {
+        btnOpenLyrics.addEventListener("click", function (e) {
+            e.stopPropagation();
+            lyricsModal.classList.add("show");
+        });
+    }
+
+    if (btnCloseLyrics && lyricsModal) {
+        btnCloseLyrics.addEventListener("click", function () {
+            lyricsModal.classList.remove("show");
+        });
+    }
+
+    if (lyricsModal) {
+        lyricsModal.addEventListener("click", function (e) {
+            if (e.target === lyricsModal) {
+                lyricsModal.classList.remove("show");
+            }
+        });
+    }
+
+    // -------------------------------------------------------------
+    // 3. Theme Switcher (Theme 1: Royal Vedic vs Theme 2: Minimalist)
     // -------------------------------------------------------------
     const btnVedic = document.getElementById("btnThemeVedic");
     const btnMinimalist = document.getElementById("btnThemeMinimalist");
@@ -183,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // -------------------------------------------------------------
-    // 3. Live Countdown Timer (Target: 01 Feb 2027, 07:00 PM IST)
+    // 4. Live Countdown Timer (Target: 01 Feb 2027, 07:00 PM IST)
     // -------------------------------------------------------------
     const weddingDate = new Date("2027-02-01T19:00:00+05:30").getTime();
 
@@ -213,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(updateCountdown, 1000);
 
     // -------------------------------------------------------------
-    // 4. Itinerary Tab Switching
+    // 5. Itinerary Tab Switching
     // -------------------------------------------------------------
     const itineraryPills = document.querySelectorAll(".itinerary-pill");
     const itineraryPanels = document.querySelectorAll(".itinerary-tab-panel");
@@ -236,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // -------------------------------------------------------------
-    // 5. Interactive FAQ Accordion
+    // 6. Interactive FAQ Accordion
     // -------------------------------------------------------------
     const faqItems = document.querySelectorAll(".faq-item");
     faqItems.forEach(item => {
@@ -244,9 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (header) {
             header.addEventListener("click", function () {
                 const isActive = item.classList.contains("active");
-                // Close all other items
                 faqItems.forEach(i => i.classList.remove("active"));
-                // If it wasn't active, activate it
                 if (!isActive) {
                     item.classList.add("active");
                 }
@@ -255,7 +378,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // -------------------------------------------------------------
-    // 6. Wedding Photo Drive & Multi-Select Gallery Upload Helper
+    // 7. Flower Petal Shower Buttons
+    // -------------------------------------------------------------
+    const petalBtns = document.querySelectorAll(".btn-trigger-petals");
+    petalBtns.forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            triggerPetalShower(42);
+            showWeddingToast("पुष्प वर्षा • Best blessings to the couple! 🌸", "💐");
+        });
+    });
+
+    // -------------------------------------------------------------
+    // 8. Native Web Share / Share Website Buttons
+    // -------------------------------------------------------------
+    const shareBtns = document.querySelectorAll(".btn-share-wedding");
+    shareBtns.forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            shareWeddingWebsite();
+        });
+    });
+
+    // -------------------------------------------------------------
+    // 9. Wedding Hashtag Copy Buttons
+    // -------------------------------------------------------------
+    const hashtagBtns = document.querySelectorAll(".btn-copy-hashtag");
+    hashtagBtns.forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const tag = this.getAttribute("data-hashtag") || "#KanikaWedsVikas";
+            copyWeddingHashtag(tag);
+        });
+    });
+
+    // -------------------------------------------------------------
+    // 10. Wedding Photo Drive Multi-Select Gallery Upload Helper
     // -------------------------------------------------------------
     const btnSelectPhotos = document.getElementById("btnSelectPhotos");
     const guestPhotoPicker = document.getElementById("guestPhotoPicker");
@@ -318,6 +476,15 @@ document.addEventListener("DOMContentLoaded", function () {
             guestPhotoPicker.value = "";
             if (selectedPhotosContainer) selectedPhotosContainer.style.display = "none";
             if (selectedThumbnails) selectedThumbnails.innerHTML = "";
+        });
+    }
+
+    // -------------------------------------------------------------
+    // 11. Offline Service Worker Registration
+    // -------------------------------------------------------------
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('./sw.js').catch(function () {});
         });
     }
 });

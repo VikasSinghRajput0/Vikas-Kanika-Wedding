@@ -1707,3 +1707,466 @@ html, body {
     padding: 24px;
     text-align: center;
 }
+
+
+/* ==========================================================================
+   Flower Petal Shower Animation (पुष्प वर्षा)
+   ========================================================================== */
+.petal-shower-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.petal-item {
+    position: absolute;
+    top: -40px;
+    border-radius: 50% 0 50% 50%;
+    opacity: 0.88;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    animation: petalFall linear forwards;
+}
+
+.petal-rose {
+    background: radial-gradient(circle at 30% 30%, #ff4b5c, #b31217 80%, #7a090e);
+}
+
+.petal-marigold {
+    background: radial-gradient(circle at 30% 30%, #ffc837, #ff8008 80%, #d45d00);
+}
+
+.petal-white {
+    background: radial-gradient(circle at 30% 30%, #ffffff, #fff2db 80%, #ebd4b5);
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.9);
+        opacity: 0.95;
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(30px) scale(1.05);
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-30px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.btn-petal-shower {
+    background: linear-gradient(135deg, #fff7eb 0%, #fae2b8 100%);
+    color: #7c141d !important;
+    border: 1.5px solid #d4af37;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 25px;
+    box-shadow: 0 2px 8px rgba(198,146,52,0.18);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.btn-petal-shower:hover {
+    background: linear-gradient(135deg, #7c141d 0%, #500a10 100%);
+    color: #ffd874 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(124,20,29,0.3);
+}
+
+/* Floating Toast Notification */
+.wedding-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(30, 8, 11, 0.96);
+    color: #ffd874;
+    border: 1.5px solid #c69234;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease;
+}
+
+.wedding-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Lyrics Modal */
+.lyrics-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(4px);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.lyrics-modal-backdrop.show {
+    display: flex;
+}
+
+.lyrics-modal-card {
+    background: #fffcf7;
+    border: 2px solid #c69234;
+    border-radius: 18px;
+    max-width: 580px;
+    width: 100%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+    animation: modalPopIn 0.3s ease;
+    overflow: hidden;
+}
+
+@keyframes modalPopIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.lyrics-modal-header {
+    background: linear-gradient(135deg, #7c141d 0%, #500a10 100%);
+    color: #ffd874;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ffd874;
+}
+
+.lyrics-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.lyrics-verse {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2b0609;
+    margin-bottom: 18px;
+    text-align: center;
+    font-family: 'Rozha One', 'Yatra One', serif;
+}
+
+.lyrics-meaning {
+    font-size: 12.5px;
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-lyrics-pill {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255, 216, 116, 0.4);
+    color: #ffd874;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-lyrics-pill:hover {
+    background: #ffd874;
+    color: #7c141d;
+}
+
+/* Wedding Hashtag Box */
+.wedding-hashtag-box {
+    background: linear-gradient(135deg, #fffcf5 0%, #fff6e8 100%);
+    border: 2px dashed #c69234;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(198,146,52,0.1);
+}
+
+.hashtag-tag-pill {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #7c141d;
+    letter-spacing: 1px;
+    background: #fff;
+    border: 1.5px solid #fae2b8;
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin: 8px 0;
+    box-shadow: inset 0 0 10px rgba(198,146,52,0.1);
+}
+
+/* Venue Distance Connector Badge */
+.venue-route-card {
+    background: #ffffff;
+    border: 2px solid #ecd5ab;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+.route-connector-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+}
+
+.route-point {
+    background: #fff8ee;
+    border: 1.5px solid #fae2b8;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #7c141d;
+}
+
+.route-dash {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #b85d19;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+
+/* ==========================================================================
+   Professional Direct Wedding Date Breakdown & Formal Patrika Notice
+   ========================================================================== */
+
+/* Hero Direct 3-Day Dates Strip */
+.direct-dates-strip {
+    background: rgba(43, 6, 9, 0.75);
+    backdrop-filter: blur(8px);
+    border: 2px solid #c69234;
+    border-radius: 16px;
+    padding: 14px 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    margin: 20px 0;
+}
+
+.direct-date-item {
+    padding: 8px 10px;
+    border-right: 1px dashed rgba(229, 169, 59, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.direct-date-item:last-child {
+    border-right: none;
+}
+
+.direct-date-day {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffd874;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.direct-date-event {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    display: block;
+}
+
+.direct-date-time {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 2px;
+    display: block;
+}
+
+.direct-date-item.main-wedding-day {
+    background: linear-gradient(135deg, rgba(124, 20, 29, 0.9) 0%, rgba(198, 146, 52, 0.85) 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(198,146,52,0.3);
+    position: relative;
+    border: 1px solid #ffd874;
+}
+
+.direct-date-item.main-wedding-day .direct-date-event {
+    color: #ffd874;
+    font-size: 14.5px;
+}
+
+.direct-date-item.main-wedding-day .direct-date-time {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Formal Digital Wedding Patrika Letter Section */
+.formal-invitation-letter-section {
+    background: linear-gradient(180deg, #2b0609 0%, #450a0f 50%, #2b0609 100%);
+    border-top: 3px solid #c69234;
+    border-bottom: 3px solid #c69234;
+    position: relative;
+    color: #ffffff;
+}
+
+.formal-invitation-letter-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(198, 146, 52, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.invitation-scroll-card {
+    background: rgba(30, 4, 7, 0.85);
+    border: 2px solid #ffd874;
+    border-radius: 18px;
+    padding: 35px 25px;
+    position: relative;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+}
+
+.invitation-gold-seal {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #ffd874, #c69234);
+    color: #7c141d;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    border: 2px solid #fff;
+}
+
+.pillar-box {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 216, 116, 0.3);
+    border-radius: 12px;
+    padding: 14px 10px;
+    height: 100%;
+    transition: all 0.25s ease;
+}
+
+.pillar-box:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffd874;
+    transform: translateY(-2px);
+}
+
+.pillar-label {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+}
+
+.pillar-val {
+    font-size: 14px;
+    color: #ffd874;
+    display: block;
+    line-height: 1.3;
+}
+
+/* Quick Navigation Anchor Strip */
+.quick-nav-strip {
+    background: #fffcf7;
+    border-bottom: 2px solid #e8c68a;
+    padding: 10px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.quick-nav-pills-wrap {
+    display: inline-flex;
+    gap: 8px;
+    padding: 0 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+.quick-nav-item {
+    background: #fff8ee;
+    border: 1px solid #fae2b8;
+    color: #7c141d !important;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.quick-nav-item:hover {
+    background: #7c141d;
+    color: #ffd874 !important;
+    border-color: #7c141d;
+}
+
+@media (max-width: 576px) {
+    .direct-date-item {
+        padding: 6px 4px;
+    }
+    .direct-date-day {
+        font-size: 9.5px;
+        letter-spacing: 0.5px;
+    }
+    .direct-date-event {
+        font-size: 12px;
+    }
+    .direct-date-time {
+        font-size: 10px;
+    }
+    .invitation-scroll-card {
+        padding: 24px 15px;
+    }
+}

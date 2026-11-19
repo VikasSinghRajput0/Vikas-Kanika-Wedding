@@ -35,6 +35,10 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Web App Manifest (PWA & Offline Access) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#7c141d">
+
     <!-- Himachali Royal Vedic & Modern Minimalist Custom Styles -->
     <link href="css/himachali-vedic.css" rel="stylesheet">
 </head>
@@ -55,6 +59,9 @@
             <div class="d-flex align-items-center">
                 <span class="music-title">तेरा मेरा लग्न (Tera Mera Lagan)</span>
                 <span class="music-status-pill" id="musicStatusPill" style="background: rgba(229, 169, 59, 0.85);">Tap to Play 🎵</span>
+                <button type="button" class="btn-lyrics-pill ml-2" id="btnSongLyrics" title="View lyrics of 'Tera Mera Lagan'">
+                    <i class="fas fa-scroll mr-1"></i> बोल
+                </button>
             </div>
             <span class="music-subtitle">
                 <i class="fas fa-music text-warning mr-1"></i> Himachali Wedding Song • Raaz Jary
@@ -145,7 +152,7 @@
                 <div class="col-lg-7 text-lg-left text-center mb-5 mb-lg-0">
                     <div class="mb-3">
                         <span class="vivah-hero-pill">
-                            🌟 The Auspicious Vivah • शुभ विवाह 🌟
+                            ⚜️ OFFICIAL WEDDING INVITATION • सादर विवाह निमंत्रण ⚜️
                         </span>
                     </div>
                     
@@ -153,14 +160,29 @@
                         KANIKA <span>&</span> VIKAS
                     </h1>
                     
-                    <div class="hero-date-box my-3">
-                        <h4 class="text-uppercase font-weight-bold text-white m-0">
-                            <i class="far fa-calendar-alt text-warning mr-2"></i> February 01 - 03, 2027
-                        </h4>
+                    <!-- Direct 3-Day Wedding Dates Breakdown (Directly Visible on Page Load) -->
+                    <div class="direct-dates-strip my-3">
+                        <div class="row no-gutters justify-content-center text-center">
+                            <div class="col-4 direct-date-item">
+                                <span class="direct-date-day">01 FEB (MON)</span>
+                                <strong class="direct-date-event">Mehndi &amp; Sangeet</strong>
+                                <small class="direct-date-time">07:00 PM onwards</small>
+                            </div>
+                            <div class="col-4 direct-date-item main-wedding-day">
+                                <span class="direct-date-day">⭐ 02 FEB (TUE)</span>
+                                <strong class="direct-date-event">Jai Mala &amp; Pheras</strong>
+                                <small class="direct-date-time">Main Vivah • 08:00 PM</small>
+                            </div>
+                            <div class="col-4 direct-date-item">
+                                <span class="direct-date-day">03 FEB (WED)</span>
+                                <strong class="direct-date-event">Bidai Ceremony</strong>
+                                <small class="direct-date-time">07:00 AM onwards</small>
+                            </div>
+                        </div>
                     </div>
 
                     <p class="lead text-light mb-4" style="max-width: 620px; font-size: 16px; font-style: italic;">
-                        "Two families, one beautiful new beginning. A lifelong promise wrapped in holy vows. Your blessings are the greatest gift we seek."
+                        "Two families, one beautiful new beginning. A lifelong promise wrapped in holy vows. Your gracious presence and blessings are our greatest gift."
                     </p>
 
                     <!-- Live Countdown Timer -->
@@ -170,32 +192,38 @@
                         </div>
                         <div class="d-flex justify-content-lg-start justify-content-center flex-wrap">
                             <div class="countdown-box">
-                                <div class="countdown-num" id="countDays">--</div>
+                                <div class="countdown-num" id="countDays">73</div>
                                 <div class="countdown-label">Days</div>
                             </div>
                             <div class="countdown-box">
-                                <div class="countdown-num" id="countHours">--</div>
+                                <div class="countdown-num" id="countHours">20</div>
                                 <div class="countdown-label">Hours</div>
                             </div>
                             <div class="countdown-box">
-                                <div class="countdown-num" id="countMinutes">--</div>
+                                <div class="countdown-num" id="countMinutes">45</div>
                                 <div class="countdown-label">Mins</div>
                             </div>
                             <div class="countdown-box">
-                                <div class="countdown-num" id="countSeconds">--</div>
+                                <div class="countdown-num" id="countSeconds">00</div>
                                 <div class="countdown-label">Secs</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PDF & WhatsApp Action Buttons -->
+                    <!-- PDF, WhatsApp, Petals & Share Action Buttons -->
                     <div class="mt-4 pt-2 hero-cta-buttons">
                         <a href="Vikas-and-Kanika-Wedding-Invitation.pdf" download="Vikas-and-Kanika-Wedding-Invitation.pdf" class="btn btn-warning font-weight-bold rounded-pill px-4 py-3 mr-2 mb-2 shadow text-dark" style="font-size: 15px;">
-                            <i class="fas fa-file-pdf mr-2 text-danger"></i> Download Full Invitation (PDF)
+                            <i class="fas fa-file-pdf mr-2 text-danger"></i> Download Invitation (PDF)
                         </a>
                         <a href="https://wa.me/918219877037?text=Namaste%20%F0%9F%99%8F%20Hearty%20congratulations%20to%20Kanika%20%26%20Vikas%20on%20their%20wedding!" target="_blank" rel="noopener noreferrer" class="btn btn-royal-primary mr-2 mb-2 font-weight-bold py-3 px-4">
                             <i class="fab fa-whatsapp mr-2 text-success"></i> WhatsApp: +91 82198 77037
                         </a>
+                        <button type="button" class="btn btn-petal-shower mr-2 mb-2 btn-trigger-petals">
+                            <i class="fas fa-spa text-danger"></i> पुष्प वर्षा (Shower Petals)
+                        </button>
+                        <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 font-weight-bold mr-2 mb-2 btn-share-wedding" style="border: 1.5px solid rgba(255,255,255,0.7); font-size: 14.5px;">
+                            <i class="fas fa-share-alt mr-2 text-warning"></i> Share Invitation
+                        </button>
                     </div>
 
                     <!-- Add to Calendar Quick Actions -->
@@ -231,6 +259,101 @@
         </div>
     </section>
     <!-- Hero End -->
+
+    <!-- Quick Jump Strip for Easy Mobile Access -->
+    <nav class="quick-nav-strip" aria-label="Quick Wedding Jump Navigation">
+        <div class="quick-nav-pills-wrap">
+            <a href="#patrika" class="quick-nav-item"><i class="fas fa-scroll text-warning"></i> निमंत्रण पत्र</a>
+            <a href="#rituals" class="quick-nav-item"><i class="far fa-calendar-alt text-warning"></i> शुभ तिथियाँ</a>
+            <a href="#about" class="quick-nav-item"><i class="fas fa-heart text-danger"></i> वर-वधु एवं परिवार</a>
+            <a href="#venues" class="quick-nav-item"><i class="fas fa-map-marker-alt text-danger"></i> विवाह स्थल</a>
+            <a href="#traditions" class="quick-nav-item"><i class="fas fa-utensils text-warning"></i> हिमाचली धाम</a>
+            <a href="#welcome" class="quick-nav-item"><i class="fas fa-envelope-open-text text-primary"></i> सादर निमंत्रण</a>
+            <a href="#memories" class="quick-nav-item"><i class="fas fa-camera text-success"></i> फोटो ड्राइव</a>
+        </div>
+    </nav>
+
+    <!-- Formal Digital Wedding Patrika Letter Section -->
+    <section class="formal-invitation-letter-section py-5" id="patrika">
+        <div class="container">
+            <div class="invitation-scroll-card text-center">
+                <div class="invitation-gold-seal mx-auto mb-3">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <span class="text-warning text-uppercase font-weight-bold d-block mb-1" style="letter-spacing: 2px; font-size: 13px;">
+                    ॥ शुभ विवाह निमंत्रण पत्र • OFFICIAL WEDDING INVITATION ॥
+                </span>
+                <h2 class="font-secondary text-white my-2" style="font-size: 2.3rem;">
+                    Kanika <span style="color: #ffd874;">&amp;</span> Vikas
+                </h2>
+                
+                <p class="text-light mx-auto mb-3" style="max-width: 780px; font-size: 16px; line-height: 1.8;">
+                    <strong>मान्यवर / Respected Family, Elders &amp; Friends,</strong><br>
+                    परमपिता परमात्मा एवं कुलदेवी-कुलदेवता की असीम अनुकम्पा से, तथा हमारे पूज्य स्वर्गीय दादा-दादी जी के शुभाशीर्वाद से, हमारे परिवार के प्रिय बच्चों — <strong>कनिका</strong> (सुपुत्री श्रीमती तारो देवी एवं श्री कुलदीप सिंह) तथा <strong>विकास</strong> (सुपुत्र श्रीमती शीला देवी एवं श्री सुरेश कुमार) का शुभ विवाह संस्कार संपन्न होना निश्चित हुआ है।<br>
+                    <span style="color: #ffd874; font-weight: 600;">
+                        इस पावन वैवाहिक बेला पर आप सपरिवार सादर आमंत्रित हैं। आपकी गरिमामयी उपस्थिति एवं मंगल आशीर्वाद ही हमारे लिए सबसे बड़ा उपहार है।
+                    </span>
+                </p>
+
+                <!-- 4 Core Pillars -->
+                <div class="row text-center mt-4 pt-3 border-top border-secondary">
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="pillar-box">
+                            <i class="far fa-calendar-alt text-warning fa-2x mb-2"></i>
+                            <div class="pillar-label">विवाह तिथियाँ (Dates)</div>
+                            <strong class="pillar-val">01 - 03 फरवरी 2027</strong>
+                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">Mon - Wed</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="pillar-box" style="border-color: #ffd874; background: rgba(198, 146, 52, 0.15);">
+                            <i class="fas fa-crown text-warning fa-2x mb-2"></i>
+                            <div class="pillar-label">मुख्य लग्न (Main Vivah)</div>
+                            <strong class="pillar-val text-warning">02 Feb (रात 8:00 बजे)</strong>
+                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">वरमाला एवं पवित्र फेरे</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="pillar-box">
+                            <i class="fas fa-map-marked-alt text-danger fa-2x mb-2"></i>
+                            <div class="pillar-label">विवाह स्थल (Venues)</div>
+                            <strong class="pillar-val">हमीरपुर (हिमाचल प्रदेश)</strong>
+                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">दुघा कलां एवं गहली</small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="pillar-box">
+                            <i class="fas fa-utensils text-success fa-2x mb-2"></i>
+                            <div class="pillar-label">शाही प्रीतिभोज (Feast)</div>
+                            <strong class="pillar-val">पारम्परिक हिमाचली धाम</strong>
+                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">बोटी द्वारा निर्मित सात्विक दावत</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formal Invitation Signatures (विनीत व दर्शनाभिलाषी) -->
+                <div class="mt-4 pt-3 border-top border-secondary">
+                    <div class="row text-center text-md-left">
+                        <div class="col-md-4 mb-2 text-center">
+                            <small class="text-warning text-uppercase font-weight-bold" style="letter-spacing: 1px;">विनीत (Hosts - Bride's Side)</small>
+                            <div class="text-white font-weight-bold">श्रीमती तारो देवी एवं श्री कुलदीप सिंह</div>
+                            <small class="text-white-50">गाँव दुघा कलां, हमीरपुर (हि.प्र.)</small>
+                        </div>
+                        <div class="col-md-4 mb-2 text-center">
+                            <small class="text-warning text-uppercase font-weight-bold" style="letter-spacing: 1px;">विनीत (Hosts - Groom's Side)</small>
+                            <div class="text-white font-weight-bold">श्रीमती शीला देवी एवं श्री सुरेश कुमार</div>
+                            <small class="text-white-50">VPO गहली, गलोड़, हमीरपुर (हि.प्र.)</small>
+                        </div>
+                        <div class="col-md-4 mb-2 text-center">
+                            <small class="text-warning text-uppercase font-weight-bold" style="letter-spacing: 1px;">R.S.V.P. / सम्पर्क</small>
+                            <div class="text-white font-weight-bold">विकास कुमार</div>
+                            <div class="text-warning font-weight-bold" style="font-size: 14px;">+91 82198 77037</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- The Happy Couple & Families Start (Clean Dignified Layout without Solo Portraits) -->
     <section class="container-fluid py-5" id="about">
@@ -720,6 +843,33 @@
                                 <i class="fas fa-directions mr-2"></i> Get Directions on Google Maps
                             </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venue Route & Distance Connector -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="venue-route-card text-center">
+                        <span class="badge badge-warning text-dark font-weight-bold text-uppercase px-3 py-1 mb-2">
+                            <i class="fas fa-route mr-1"></i> Venue Connectivity &amp; Proximity • दूरी एवं मार्ग
+                        </span>
+                        <div class="route-connector-line">
+                            <div class="route-point">
+                                <i class="fas fa-home text-danger mr-1"></i> वरपक्ष गृह (VPO Gahli, Galore)
+                            </div>
+                            <div class="route-dash">
+                                <i class="fas fa-car-side text-warning fa-lg"></i>
+                                <span>Approx. 18–20 km (~25 mins scenic drive)</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="route-point">
+                                <i class="fas fa-map-marker-alt text-success mr-1"></i> वधुपक्ष स्थल (Village Dugha Kalan)
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2" style="font-size: 13.5px;">
+                            <i class="fas fa-info-circle text-primary mr-1"></i> Smooth, scenic road via Galore – Hamirpur route. Direct road connectivity with open parking available at both family venues.
+                        </small>
                     </div>
                 </div>
             </div>
@@ -1260,15 +1410,39 @@
                 </div>
             </div>
 
+            <!-- Official Wedding Hashtag Box -->
+            <div class="wedding-hashtag-box my-4">
+                <div class="font-weight-bold text-muted small text-uppercase" style="letter-spacing: 1.5px;">
+                    <i class="fas fa-hashtag text-danger mr-1"></i> Official Wedding Hashtags • शादी के हैशटैग
+                </div>
+                <div class="d-flex flex-wrap justify-content-center align-items-center mt-2" style="gap: 15px;">
+                    <div>
+                        <span class="hashtag-tag-pill">#KanikaWedsVikas</span>
+                        <button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-3 py-1 font-weight-bold btn-copy-hashtag ml-1" data-hashtag="#KanikaWedsVikas">
+                            <i class="far fa-copy mr-1"></i> Copy
+                        </button>
+                    </div>
+                    <div>
+                        <span class="hashtag-tag-pill" style="font-size: 19px; color: #b85d19;">#VikasKiKanika</span>
+                        <button type="button" class="btn btn-sm btn-outline-warning text-dark rounded-pill px-3 py-1 font-weight-bold btn-copy-hashtag ml-1" data-hashtag="#VikasKiKanika">
+                            <i class="far fa-copy mr-1"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                <small class="text-muted d-block mt-2" style="font-size: 13px;">
+                    <i class="fab fa-instagram text-danger mr-1"></i> Tag your lovely photos, reels, and stories so Kanika &amp; Vikas can relive every blessed moment!
+                </small>
+            </div>
+
             <!-- Ready-to-Share WhatsApp Status / Story Invitation Card -->
-            <div class="story-card-banner mt-5">
+            <div class="story-card-banner mt-4">
                 <div class="row align-items-center">
                     <div class="col-md-3 text-center mb-3 mb-md-0">
                         <div style="width: 75px; height: 75px; border-radius: 18px; background: #25d366; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 4px 12px rgba(37,211,102,0.35);">
                             <i class="fab fa-whatsapp"></i>
                         </div>
                     </div>
-                    <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                    <div class="col-md-5 text-center text-md-left mb-3 mb-md-0">
                         <span class="badge badge-success px-3 py-1 font-weight-bold text-uppercase mb-1">
                             WhatsApp Status &amp; Story Share
                         </span>
@@ -1279,11 +1453,14 @@
                             Invite friends &amp; family with one tap! Download or view the full wedding invitation card to post on your WhatsApp Status and stories.
                         </p>
                     </div>
-                    <div class="col-md-3 text-center text-md-right">
-                        <a href="invitation-card.html" target="_blank" rel="noopener noreferrer" class="btn btn-warning rounded-pill px-4 py-3 font-weight-bold text-dark shadow-sm btn-block mb-2">
+                    <div class="col-md-4 text-center text-md-right">
+                        <a href="invitation-card.html" target="_blank" rel="noopener noreferrer" class="btn btn-warning rounded-pill px-4 py-2 font-weight-bold text-dark shadow-sm btn-block mb-2">
                             <i class="fas fa-eye mr-1"></i> Open Status Card
                         </a>
-                        <a href="Vikas-and-Kanika-Wedding-Invitation.pdf" download="Vikas-and-Kanika-Wedding-Invitation.pdf" class="btn btn-outline-dark rounded-pill px-4 py-2 font-weight-bold btn-block small" style="font-size: 13px;">
+                        <a href="img/invitation-card-full-preview.jpg" download="Kanika-and-Vikas-Wedding-Invitation-Card.jpg" class="btn btn-success rounded-pill px-4 py-2 font-weight-bold btn-block mb-2 shadow-sm text-white" style="font-size: 13.5px;">
+                            <i class="fas fa-image mr-1"></i> Save Image for WhatsApp Status
+                        </a>
+                        <a href="Vikas-and-Kanika-Wedding-Invitation.pdf" download="Vikas-and-Kanika-Wedding-Invitation.pdf" class="btn btn-outline-dark rounded-pill px-4 py-2 font-weight-bold btn-block small" style="font-size: 12.5px;">
                             <i class="fas fa-download mr-1 text-danger"></i> Download PDF
                         </a>
                     </div>
@@ -1333,10 +1510,16 @@
                 <div class="mb-3 text-warning font-weight-bold" style="font-size: 15px;">
                     <i class="fab fa-whatsapp text-success mr-1"></i> WhatsApp / RSVP: <a href="https://wa.me/918219877037" target="_blank" rel="noopener noreferrer" class="text-warning text-decoration-underline">+91 82198 77037</a>
                 </div>
-                <div class="mt-2">
+                <div class="mt-3 d-flex flex-wrap justify-content-center" style="gap: 8px;">
                     <a href="Vikas-and-Kanika-Wedding-Invitation.pdf" download="Vikas-and-Kanika-Wedding-Invitation.pdf" class="btn btn-warning rounded-pill px-4 py-2 font-weight-bold text-dark shadow-sm">
                         <i class="fas fa-file-pdf mr-1 text-danger"></i> Download Invitation Card (PDF)
                     </a>
+                    <button type="button" class="btn btn-outline-warning rounded-pill px-4 py-2 font-weight-bold btn-trigger-petals">
+                        <i class="fas fa-spa mr-1 text-danger"></i> पुष्प वर्षा (Shower Petals)
+                    </button>
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 font-weight-bold btn-share-wedding">
+                        <i class="fas fa-share-alt mr-1 text-warning"></i> Share
+                    </button>
                 </div>
             </div>
 
@@ -1351,6 +1534,48 @@
 
     <!-- Back to Top -->
     <a href="#home" class="btn btn-lg btn-outline-warning btn-lg-square back-to-top" style="border-radius: 50%;" aria-label="Back to top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- Song Lyrics Modal (तेरा मेरा लग्न - Raaz Jary) -->
+    <div class="lyrics-modal-backdrop" id="songLyricsModal" role="dialog" aria-modal="true" aria-labelledby="lyricsTitle">
+        <div class="lyrics-modal-card">
+            <div class="lyrics-modal-header">
+                <div>
+                    <h5 class="mb-0 font-weight-bold" id="lyricsTitle" style="color: #ffd874;">
+                        <i class="fas fa-music mr-2"></i> तेरा मेरा लग्न (Tera Mera Lagan)
+                    </h5>
+                    <small class="text-white-50">Himachali Folk Wedding Melody • Singer: Raaz Jary</small>
+                </div>
+                <button type="button" class="btn btn-sm text-warning font-weight-bold p-0" id="btnCloseSongLyrics" aria-label="Close" style="font-size: 20px;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="lyrics-modal-body">
+                <div class="text-center mb-3">
+                    <span class="badge badge-warning text-dark font-weight-bold px-3 py-1">पहाड़ी विवाह गीत</span>
+                </div>
+                <div class="lyrics-verse">
+                    "तेरा मेरा लग्न लगा, बजदे ढोल नगाड़े हो...<br>
+                    पहाड़ां दे रस्ते सजी गए, आए तेरे प्यारे हो।"
+                    <div class="lyrics-meaning">"Our sacred lagan is solemnized as drums echo in joy; the hill pathways are adorned as loved ones arrive."</div>
+                </div>
+                <div class="lyrics-verse">
+                    "देवभूमि दे बासी सारे, मंगल गीत सुनांदे हो...<br>
+                    सात फेरे अग्नि साक्षी, जन्मों दे बंधन बांधे हो।"
+                    <div class="lyrics-meaning">"Dwellers of Devbhoomi sing auspicious hymns; around the holy fire, seven eternal vows are tied."</div>
+                </div>
+                <div class="lyrics-verse">
+                    "सुहाग तेरा अमर रवे, खुशियां नाल संसार सजे...<br>
+                    हाथ जोड़ शीश झुकांदे, कुलदेवते आशीर्वाद देंदे हो।"
+                    <div class="lyrics-meaning">"May your bond be blessed eternally with joy; with folded hands we bow as ancestral deities shower their holy grace."</div>
+                </div>
+                <div class="text-center mt-3 pt-2 border-top">
+                    <button type="button" class="btn btn-royal-primary rounded-pill px-4 btn-trigger-petals">
+                        <i class="fas fa-spa mr-1 text-warning"></i> पुष्प वर्षा करें (Shower Petals)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
