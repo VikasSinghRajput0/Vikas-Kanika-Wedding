@@ -2170,3 +2170,234 @@ html, body {
         padding: 24px 15px;
     }
 }
+
+
+/* ==========================================================================
+   Compact Royal Couple & Families Section (Space Optimization)
+   ========================================================================== */
+.compact-couple-section {
+    padding: 30px 0 !important;
+    background: #fdfbf7;
+}
+
+.compact-couple-card {
+    background: #ffffff;
+    border: 2px solid #ecd5ab;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 25px rgba(124, 20, 29, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.compact-couple-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e66a1f, #c69234, #7c141d);
+}
+
+.compact-person-box {
+    padding: 18px 16px;
+    background: #fffcf7;
+    border: 1px solid #fae2b8;
+    border-radius: 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.compact-person-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(198, 146, 52, 0.12);
+    border-color: #c69234;
+}
+
+.compact-person-box.bride-side {
+    border-top: 3.5px solid #e66a1f;
+}
+
+.compact-person-box.groom-side {
+    border-top: 3.5px solid #7c141d;
+}
+
+.compact-monogram {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 6px auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: 'Rozha One', 'Cinzel', serif;
+    color: #ffd874;
+    border: 2px solid #ffd874;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.compact-monogram.bride-bg {
+    background: radial-gradient(circle at center, #9e3612 0%, #702107 100%);
+}
+
+.compact-monogram.groom-bg {
+    background: radial-gradient(circle at center, #7c141d 0%, #4a090e 100%);
+}
+
+.compact-person-name {
+    font-family: 'Cinzel', serif;
+    font-size: 21px;
+    font-weight: 800;
+    color: #7c141d;
+    margin-bottom: 3px;
+    letter-spacing: 1px;
+}
+
+.compact-parents-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #b85d19;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.compact-parents-names {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 4px;
+    line-height: 1.35;
+}
+
+.compact-residence {
+    font-size: 12px;
+    color: #555555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.compact-center-knot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.compact-crest-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ffd874;
+    box-shadow: 0 4px 14px rgba(124, 20, 29, 0.2);
+    margin-bottom: 6px;
+}
+
+.compact-vivah-tag {
+    font-family: 'Great Vibes', cursive;
+    color: #c69234;
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.compact-quote-ribbon {
+    background: #fff8ee;
+    border: 1px dashed #e8c68a;
+    border-radius: 12px;
+    padding: 10px 18px;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 13.5px;
+    color: #4a4a4a;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    .compact-couple-card {
+        padding: 16px 12px;
+    }
+    .compact-person-box {
+        padding: 14px 10px;
+    }
+    .compact-monogram {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    .compact-person-name {
+        font-size: 18px;
+    }
+    .compact-parents-names {
+        font-size: 14px;
+    }
+    .compact-center-knot {
+        padding: 12px 0;
+    }
+    .compact-crest-img {
+        width: 68px;
+        height: 68px;
+    }
+}
+
+
+/* ==========================================================================
+   Sleek Vedic Top Ribbon (Space-Efficient & Royal)
+   ========================================================================== */
+.vedic-top-ribbon {
+    background: radial-gradient(circle at center, #6b0f17 0%, #3a060a 100%);
+    border-bottom: 2px solid #ffd874;
+    color: #ffffff;
+    font-size: 13px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 1030;
+}
+
+.ribbon-om {
+    color: #ffd874;
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+.ribbon-shloka {
+    font-family: 'Rozha One', 'Yatra One', serif;
+    color: #ffd874;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 13.5px;
+}
+
+.ribbon-tag {
+    background: rgba(255, 216, 116, 0.15);
+    border: 1px solid rgba(255, 216, 116, 0.4);
+    color: #ffd874;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+}
+
+.ribbon-blessing {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+@media (max-width: 576px) {
+    .ribbon-shloka {
+        font-size: 11.5px;
+        letter-spacing: 0.5px;
+    }
+}
