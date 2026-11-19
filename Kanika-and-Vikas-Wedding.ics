@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kanika & Vikas Wedding//Hamirpur Himachal Pradesh//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Kanika & Vikas Wedding
+X-WR-TIMEZONE:Asia/Kolkata
+BEGIN:VEVENT
+UID:kanika-vikas-wedding-20270202@hamirpur
+DTSTAMP:20261119T160000Z
+DTSTART:20270202T133000Z
+DTEND:20270202T233000Z
+SUMMARY:💍 Kanika & Vikas Auspicious Vivah (जय माला एवं वैदिक लग्न)
+DESCRIPTION:Cordially inviting you with family to celebrate the sacred wedding of Kanika & Vikas in Hamirpur, Himachal Pradesh.\n\nKey Events:\n• Grand Jai Mala & Barat: 08:00 PM onwards\n• Vedic Lagan & Sacred Pheras: 10:00 PM\n• Traditional Himachali Dhaam Feast\n\nContact / WhatsApp: +91 82198 77037
+LOCATION:Village Dugha Kalan, P.O. Dugha, Hamirpur, Himachal Pradesh, India
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT24H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Kanika & Vikas Wedding Tomorrow in Hamirpur!
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Kanika & Vikas Wedding Barat & Jai Mala this evening at 8:00 PM!
+END:VALARM
+END:VEVENT
+END:VCALENDAR

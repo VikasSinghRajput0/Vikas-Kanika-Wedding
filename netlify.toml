@@ -24,6 +24,12 @@
     Content-Disposition = "inline"
 
 [[headers]]
+  for = "/*.ics"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "text/calendar; charset=utf-8"
+
+[[headers]]
   for = "/img/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, immutable"
@@ -37,4 +43,3 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
-

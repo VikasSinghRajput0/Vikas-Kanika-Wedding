@@ -3,10 +3,21 @@
  * - "Tera Mera Lagan" (तेरा मेरा लग्न) Background Audio Player (Seamless Autoplay with Gesture Unlock)
  * - Dual Theme Switcher (Royal Vedic & Modern Minimalist)
  * - Live Countdown to Feb 01, 2027
- * - WhatsApp Instant RSVP
- * - Wishes & Blessings Wall
+ * - Add to Calendar Helper (.ics & Google Calendar)
+ * - Interactive FAQ Accordion
  * - Wedding Photo Drive & Multi-Select Gallery Upload Helper
  */
+
+// Global HTML Escaping Utility (prevents XSS and ReferenceErrors)
+function escapeHtml(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     // -------------------------------------------------------------
@@ -225,7 +236,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // -------------------------------------------------------------
-    // 5. Wedding Photo Drive & Multi-Select Gallery Upload Helper
+    // 5. Interactive FAQ Accordion
+    // -------------------------------------------------------------
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+        const header = item.querySelector(".faq-header");
+        if (header) {
+            header.addEventListener("click", function () {
+                const isActive = item.classList.contains("active");
+                // Close all other items
+                faqItems.forEach(i => i.classList.remove("active"));
+                // If it wasn't active, activate it
+                if (!isActive) {
+                    item.classList.add("active");
+                }
+            });
+        }
+    });
+
+    // -------------------------------------------------------------
+    // 6. Wedding Photo Drive & Multi-Select Gallery Upload Helper
     // -------------------------------------------------------------
     const btnSelectPhotos = document.getElementById("btnSelectPhotos");
     const guestPhotoPicker = document.getElementById("guestPhotoPicker");
