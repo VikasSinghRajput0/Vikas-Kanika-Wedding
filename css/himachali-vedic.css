@@ -24,11 +24,17 @@
 }
 
 /* Base & Typography */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--cream-bg);
     color: #3e2723;
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 .font-sanskrit, .shloka-text {
@@ -216,7 +222,7 @@ body {
     gap: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    max-width: calc(100vw - 44px);
+    max-width: calc(100% - 44px);
     text-decoration: none !important;
 }
 
@@ -810,6 +816,23 @@ body {
     margin: 25px auto;
 }
 
+@media (max-width: 576px) {
+    .royal-footer {
+        padding: 40px 14px 25px !important;
+    }
+    .royal-footer h2 {
+        font-size: 1.55rem !important;
+        line-height: 1.3 !important;
+    }
+    .compliments-box {
+        padding: 16px 12px !important;
+        margin: 18px auto !important;
+    }
+    .compliments-box h5 {
+        font-size: 14.5px !important;
+    }
+}
+
 /* ==========================================================================
    PHOTO SHOWCASE & INVITATION CARD STYLES
    ========================================================================== */
@@ -1087,9 +1110,10 @@ body.mode-minimalist .royal-footer {
    MOBILE & TABLET RESPONSIVENESS (PERFECT FIT ON ALL SCREENS)
    ========================================================================== */
 html, body {
-    overflow-x: clip !important;
+    overflow-x: hidden !important;
     width: 100% !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -1200,7 +1224,7 @@ html, body {
         letter-spacing: 0.5px !important;
     }
 
-    /* Floating Music Bar */
+    /* Floating Music Bar & Back to top separation */
     .floating-music-bar {
         left: 8px !important;
         right: 8px !important;
@@ -1208,6 +1232,15 @@ html, body {
         width: auto !important;
         max-width: calc(100% - 16px) !important;
         padding: 6px 10px !important;
+        z-index: 1040 !important;
+    }
+    .back-to-top {
+        bottom: 74px !important;
+        right: 14px !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 16px !important;
+        z-index: 1050 !important;
     }
     .music-disc-icon {
         width: 34px !important;
@@ -1217,7 +1250,7 @@ html, body {
     }
     .music-title {
         font-size: 11.5px !important;
-        max-width: 145px;
+        max-width: 130px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1315,6 +1348,85 @@ html, body {
     font-size: 16.5px;
 }
 
+/* Hero CTA Action Buttons */
+.hero-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: 30px;
+    margin: 0 !important;
+    transition: all 0.25s ease;
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.hero-btn-pdf {
+    background: #e5a93b;
+    color: #1a0204 !important;
+    border: none;
+}
+
+.hero-btn-pdf:hover {
+    background: #ffd874;
+    color: #000 !important;
+}
+
+.hero-btn-wa {
+    background: #7c141d;
+    color: #ffd874 !important;
+    border: 1.5px solid #ffd874;
+}
+
+.hero-btn-wa:hover {
+    background: #9e1b26;
+    color: #fff !important;
+}
+
+.hero-btn-petals {
+    background: linear-gradient(135deg, #fff7eb 0%, #fae2b8 100%);
+    color: #7c141d !important;
+    border: 1.5px solid #d4af37;
+}
+
+.hero-btn-petals:hover {
+    background: linear-gradient(135deg, #7c141d 0%, #500a10 100%);
+    color: #ffd874 !important;
+}
+
+.hero-btn-share {
+    background: transparent;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(255,255,255,0.7);
+}
+
+.hero-btn-share:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #ffd874;
+    color: #ffd874 !important;
+}
+
+@media (max-width: 991px) {
+    .hero-cta-buttons {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 576px) {
     .vivah-hero-pill {
         font-size: 11px !important;
@@ -1328,12 +1440,20 @@ html, body {
         font-size: 13.5px !important;
         letter-spacing: 1px !important;
     }
+    .hero-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .hero-btn,
     .hero-cta-buttons .btn {
         width: 100% !important;
         margin-right: 0 !important;
-        margin-bottom: 10px !important;
-        font-size: 13.5px !important;
+        margin-bottom: 0 !important;
+        font-size: 14px !important;
         padding: 12px 14px !important;
+        white-space: normal !important;
+        justify-content: center !important;
     }
 }
 
@@ -1662,6 +1782,10 @@ html, body {
     gap: 12px;
 }
 
+.faq-question i {
+    flex-shrink: 0;
+}
+
 .faq-item.active .faq-question {
     color: #7c141d;
     font-weight: 700;
@@ -1671,6 +1795,8 @@ html, body {
     font-size: 14px;
     color: #c69234;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 12px;
 }
 
 .faq-item.active .faq-toggle-icon {
@@ -1699,6 +1825,42 @@ html, body {
     margin: 0;
 }
 
+@media (max-width: 576px) {
+    .wa-chips-grid {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .wa-chip-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+    .faq-header {
+        padding: 12px 14px;
+    }
+    .faq-question {
+        font-size: 13.5px;
+        gap: 8px;
+    }
+    .faq-body {
+        padding: 0 14px;
+    }
+    .faq-item.active .faq-body {
+        padding: 12px 14px 14px;
+    }
+    .faq-answer {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    .story-card-banner {
+        padding: 16px 12px;
+    }
+    .winter-attire-card {
+        padding: 18px 14px;
+    }
+}
+
 /* WhatsApp Status / Story Invitation Card */
 .story-card-banner {
     background: linear-gradient(135deg, #fff9ee 0%, #fdf5e2 100%);
@@ -1716,7 +1878,8 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     height: 100vh;
     pointer-events: none;
     z-index: 999999;
@@ -1884,6 +2047,24 @@ html, body {
     font-family: 'Poppins', sans-serif;
 }
 
+@media (max-width: 576px) {
+    .lyrics-modal-card {
+        max-height: 90vh;
+    }
+    .lyrics-modal-header {
+        padding: 12px 16px;
+    }
+    .lyrics-modal-body {
+        padding: 16px 14px;
+    }
+    .lyrics-verse {
+        font-size: 13.5px;
+    }
+    .lyrics-meaning {
+        font-size: 11.5px;
+    }
+}
+
 .btn-lyrics-pill {
     background: rgba(255,255,255,0.18);
     border: 1px solid rgba(255, 216, 116, 0.4);
@@ -1929,6 +2110,17 @@ html, body {
     box-shadow: inset 0 0 10px rgba(198,146,52,0.1);
 }
 
+@media (max-width: 576px) {
+    .hashtag-tag-pill {
+        font-size: 16px !important;
+        padding: 4px 12px !important;
+        letter-spacing: 0.5px;
+    }
+    .wedding-hashtag-box {
+        padding: 14px 10px;
+    }
+}
+
 /* Venue Distance Connector Badge */
 .venue-route-card {
     background: #ffffff;
@@ -1946,6 +2138,26 @@ html, body {
     gap: 15px;
     flex-wrap: wrap;
     margin: 12px 0;
+}
+
+@media (max-width: 767px) {
+    .route-connector-line {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .route-point {
+        width: 100%;
+        max-width: 340px;
+        text-align: center;
+    }
+    .route-dash {
+        flex-direction: column;
+        gap: 4px;
+        padding: 4px 0;
+    }
+    .route-dash .fa-arrow-right {
+        transform: rotate(90deg);
+    }
 }
 
 .route-point {
@@ -2121,14 +2333,28 @@ html, body {
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.quick-nav-strip::-webkit-scrollbar {
+    display: none;
 }
 
 .quick-nav-pills-wrap {
     display: inline-flex;
     gap: 8px;
     padding: 0 15px;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    min-width: 100%;
+    width: max-content;
+}
+
+@media (min-width: 992px) {
+    .quick-nav-pills-wrap {
+        justify-content: center;
+        width: 100%;
+    }
 }
 
 .quick-nav-item {
@@ -2152,22 +2378,72 @@ html, body {
     border-color: #7c141d;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
+    .direct-dates-strip {
+        padding: 10px 8px;
+        margin: 16px 0;
+    }
+    .direct-dates-strip .row {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
     .direct-date-item {
-        padding: 6px 4px;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1px dashed rgba(229, 169, 59, 0.3);
+        padding: 9px 12px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        text-align: left !important;
+        border-radius: 8px;
+    }
+    .direct-date-item:last-child {
+        border-bottom: none !important;
     }
     .direct-date-day {
-        font-size: 9.5px;
-        letter-spacing: 0.5px;
+        font-size: 11px !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap;
+        min-width: 82px;
     }
     .direct-date-event {
-        font-size: 12px;
+        font-size: 13.5px !important;
+        padding: 0 8px;
+        text-align: center;
+        flex: 1;
     }
     .direct-date-time {
-        font-size: 10px;
+        font-size: 11px !important;
+        margin-top: 0 !important;
+        white-space: nowrap;
+        text-align: right;
+    }
+    .direct-date-item.main-wedding-day {
+        border: 1px solid #ffd874 !important;
     }
     .invitation-scroll-card {
-        padding: 24px 15px;
+        padding: 24px 14px;
+    }
+}
+
+@media (max-width: 420px) {
+    .direct-date-item {
+        padding: 8px 6px !important;
+    }
+    .direct-date-day {
+        font-size: 10px !important;
+        min-width: 72px;
+    }
+    .direct-date-event {
+        font-size: 12px !important;
+        padding: 0 4px;
+    }
+    .direct-date-time {
+        font-size: 10px !important;
     }
 }
 
@@ -2396,8 +2672,22 @@ html, body {
 }
 
 @media (max-width: 576px) {
+    .vedic-top-ribbon .container {
+        justify-content: center !important;
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+    .ribbon-invocation {
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
     .ribbon-shloka {
-        font-size: 11.5px;
-        letter-spacing: 0.5px;
+        font-size: 11px !important;
+        letter-spacing: 0.5px !important;
+    }
+    .compact-quote-ribbon {
+        font-size: 12px !important;
+        padding: 8px 10px !important;
     }
 }
