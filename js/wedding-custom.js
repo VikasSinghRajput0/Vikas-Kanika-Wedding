@@ -193,43 +193,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Attempt autoplay immediately
-    startMusic();
-
-    // Global gesture unlock: on the very first touch/click anywhere on the page, music starts!
-    let isGestureUnlocked = false;
-    const unlockEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'];
-
-    function globalGestureUnlock() {
-        if (isGestureUnlocked) return;
-        if (weddingAudio && weddingAudio.paused) {
-            weddingAudio.volume = 0.95;
-            const p = weddingAudio.play();
-            if (p !== undefined) {
-                p.then(function () {
-                    isGestureUnlocked = true;
-                    unlockEvents.forEach(function (evt) {
-                        window.removeEventListener(evt, globalGestureUnlock, true);
-                    });
-                }).catch(function () {});
-            }
-        } else if (weddingAudio && !weddingAudio.paused) {
-            isGestureUnlocked = true;
-            unlockEvents.forEach(function (evt) {
-                window.removeEventListener(evt, globalGestureUnlock, true);
-            });
-        }
-    }
-
-    unlockEvents.forEach(function (evt) {
-        window.addEventListener(evt, globalGestureUnlock, { capture: true, passive: true });
-    });
+    // Strictly Manual Playback: NEVER auto-play song on load or gesture
+    updateAudioUI(false);
 
     // Toggle on floating music bar click
     if (musicBar) {
         musicBar.addEventListener("click", function (e) {
-            // Don't toggle music if user clicked lyrics button
-            if (e.target.closest("#btnSongLyrics")) return;
+            if (e.target.closest("#btnCloseMusicBar") || e.target.closest("#btnSongLyrics")) return;
             e.preventDefault();
             toggleMusic();
         });
@@ -239,6 +209,16 @@ document.addEventListener("DOMContentLoaded", function () {
         playToggleBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             toggleMusic();
+        });
+    }
+
+    // Dismiss floating music bar if user closes it
+    const btnCloseMusicBar = document.getElementById("btnCloseMusicBar");
+    if (btnCloseMusicBar && musicBar) {
+        btnCloseMusicBar.addEventListener("click", function (e) {
+            e.stopPropagation();
+            pauseMusic();
+            musicBar.style.display = "none";
         });
     }
 

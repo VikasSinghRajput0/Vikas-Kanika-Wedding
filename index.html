@@ -33,42 +33,42 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=2.2" rel="stylesheet">
 
     <!-- Web App Manifest (PWA & Offline Access) -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#7c141d">
 
     <!-- Himachali Royal Vedic & Modern Minimalist Custom Styles -->
-    <link href="css/himachali-vedic.css" rel="stylesheet">
+    <link href="css/himachali-vedic.css?v=2.2" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="75">
 
-    <!-- Background Audio: Plays Automatically by Default -->
-    <audio id="weddingAudio" autoplay loop playsinline webkit-playsinline preload="auto">
+    <!-- Background Audio: Plays ONLY on Explicit User Click / Tap -->
+    <audio id="weddingAudio" loop playsinline webkit-playsinline preload="none">
         <source src="audio/tera-mera-lagan.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Floating Music Bar -->
-    <div class="floating-music-bar pulse-glow" id="floatingMusicBar" title="Click to Pause / Play 'Tera Mera Lagan' Himachali wedding song">
+    <!-- Floating Music Bar (Compact, Manual Play, Dismissible) -->
+    <div class="floating-music-bar" id="floatingMusicBar" title="Click to Play / Pause 'Tera Mera Lagan'">
         <div class="music-disc-icon" id="musicDiscIcon">
             <i class="fas fa-compact-disc"></i>
         </div>
         <div class="music-info">
             <div class="d-flex align-items-center">
-                <span class="music-title">तेरा मेरा लग्न (Tera Mera Lagan)</span>
-                <span class="music-status-pill" id="musicStatusPill" style="background: rgba(229, 169, 59, 0.85);">Tap to Play 🎵</span>
-                <button type="button" class="btn-lyrics-pill ml-2" id="btnSongLyrics" title="View lyrics of 'Tera Mera Lagan'">
-                    <i class="fas fa-scroll mr-1"></i> बोल
-                </button>
+                <span class="music-title">तेरा मेरा लग्न</span>
+                <span class="music-status-pill" id="musicStatusPill" style="background: rgba(229, 169, 59, 0.9);">Play Song 🎵</span>
             </div>
             <span class="music-subtitle">
-                <i class="fas fa-music text-warning mr-1"></i> Himachali Wedding Song • Raaz Jary
+                <i class="fas fa-music text-warning mr-1"></i> Himachali Song • Raaz Jary
             </span>
         </div>
         <button type="button" class="music-play-btn ml-1" id="btnMusicPlayToggle" aria-label="Toggle Play">
             <i class="fas fa-play" id="musicPlayBtnIcon"></i>
+        </button>
+        <button type="button" class="btn btn-sm text-white-50 ml-1 p-0" id="btnCloseMusicBar" title="Close player" aria-label="Close music bar" style="font-size: 16px; line-height: 1; padding: 2px 6px !important; background: transparent; border: none;">
+            <i class="fas fa-times"></i>
         </button>
     </div>
 
@@ -235,35 +235,35 @@
     <!-- Hero End -->
 
     <!-- Quick Jump Strip for Easy Mobile Access -->
-    <nav class="quick-nav-strip" aria-label="Quick Wedding Jump Navigation">
-        <div class="quick-nav-pills-wrap">
-            <a href="#patrika" class="quick-nav-item"><i class="fas fa-scroll text-warning"></i> निमंत्रण पत्र</a>
-            <a href="#rituals" class="quick-nav-item"><i class="far fa-calendar-alt text-warning"></i> शुभ तिथियाँ</a>
-            <a href="#about" class="quick-nav-item"><i class="fas fa-heart text-danger"></i> वर-वधु एवं परिवार</a>
-            <a href="#venues" class="quick-nav-item"><i class="fas fa-map-marker-alt text-danger"></i> विवाह स्थल</a>
-            <a href="#traditions" class="quick-nav-item"><i class="fas fa-utensils text-warning"></i> हिमाचली धाम</a>
-            <a href="#welcome" class="quick-nav-item"><i class="fas fa-envelope-open-text text-primary"></i> सादर निमंत्रण</a>
-            <a href="#memories" class="quick-nav-item"><i class="fas fa-camera text-success"></i> फोटो ड्राइव</a>
+    <nav class="quick-nav-strip" aria-label="Quick Wedding Jump Navigation" style="background: #fffcf7; border-bottom: 2px solid #e8c68a; padding: 10px 0; overflow-x: auto; white-space: nowrap;">
+        <div class="quick-nav-pills-wrap" style="display: flex; flex-wrap: nowrap; gap: 8px; padding: 0 15px; width: max-content;">
+            <a href="#patrika" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="fas fa-scroll text-warning"></i> निमंत्रण पत्र</a>
+            <a href="#rituals" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="far fa-calendar-alt text-warning"></i> शुभ तिथियाँ</a>
+            <a href="#about" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="fas fa-heart text-danger"></i> वर-वधु एवं परिवार</a>
+            <a href="#venues" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="fas fa-map-marker-alt text-danger"></i> विवाह स्थल</a>
+            <a href="#traditions" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="fas fa-utensils text-warning"></i> हिमाचली धाम</a>
+            <a href="#welcome" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="fas fa-envelope-open-text text-primary"></i> सादर निमंत्रण</a>
+            <a href="#memories" class="quick-nav-item" style="white-space: nowrap; flex-shrink: 0;"><i class="fas fa-camera text-success"></i> फोटो ड्राइव</a>
         </div>
     </nav>
 
     <!-- Formal Digital Wedding Patrika Letter Section -->
-    <section class="formal-invitation-letter-section py-5" id="patrika">
+    <section class="formal-invitation-letter-section py-5" id="patrika" style="background: linear-gradient(180deg, #2b0609 0%, #450a0f 50%, #2b0609 100%) !important; color: #ffffff !important; border-top: 3px solid #c69234; border-bottom: 3px solid #c69234;">
         <div class="container">
-            <div class="invitation-scroll-card text-center">
+            <div class="invitation-scroll-card text-center" style="background: rgba(30, 4, 7, 0.95) !important; border: 2px solid #ffd874 !important; border-radius: 18px; padding: 32px 20px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);">
                 <div class="invitation-gold-seal mx-auto mb-3">
                     <i class="fas fa-certificate"></i>
                 </div>
-                <span class="text-warning text-uppercase font-weight-bold d-block mb-1" style="letter-spacing: 2px; font-size: 13px;">
+                <span class="text-warning text-uppercase font-weight-bold d-block mb-1" style="letter-spacing: 2px; font-size: 13px; color: #ffd874 !important;">
                     ॥ शुभ विवाह निमंत्रण पत्र • OFFICIAL WEDDING INVITATION ॥
                 </span>
-                <h2 class="font-secondary text-white my-2" style="font-size: 2.3rem;">
+                <h2 class="font-secondary my-2" style="font-size: 2.3rem; color: #ffffff !important;">
                     Kanika <span style="color: #ffd874;">&amp;</span> Vikas
                 </h2>
                 
-                <p class="text-light mx-auto mb-3" style="max-width: 780px; font-size: 16px; line-height: 1.8;">
-                    <strong>मान्यवर / Respected Family, Elders &amp; Friends,</strong><br>
-                    परमपिता परमात्मा एवं कुलदेवी-कुलदेवता की असीम अनुकम्पा से, तथा हमारे पूज्य स्वर्गीय दादा-दादी जी के शुभाशीर्वाद से, हमारे परिवार के प्रिय बच्चों — <strong>कनिका</strong> (सुपुत्री श्रीमती तारो देवी एवं श्री कुलदीप सिंह) तथा <strong>विकास</strong> (सुपुत्र श्रीमती शीला देवी एवं श्री सुरेश कुमार) का शुभ विवाह संस्कार संपन्न होना निश्चित हुआ है।<br>
+                <p class="mx-auto mb-3" style="max-width: 780px; font-size: 16px; line-height: 1.8; color: #ffffff !important;">
+                    <strong style="color: #ffd874;">मान्यवर / Respected Family, Elders &amp; Friends,</strong><br>
+                    परमपिता परमात्मा एवं कुलदेवी-कुलदेवता की असीम अनुकम्पा से, तथा हमारे पूज्य स्वर्गीय दादा-दादी जी के शुभाशीर्वाद से, हमारे परिवार के प्रिय बच्चों — <strong style="color: #ffd874;">कनिका</strong> (सुपुत्री श्रीमती तारो देवी एवं श्री कुलदीप सिंह) तथा <strong style="color: #ffd874;">विकास</strong> (सुपुत्र श्रीमती शीला देवी एवं श्री सुरेश कुमार) का शुभ विवाह संस्कार संपन्न होना निश्चित हुआ है।<br>
                     <span style="color: #ffd874; font-weight: 600;">
                         इस पावन वैवाहिक बेला पर आप सपरिवार सादर आमंत्रित हैं। आपकी गरिमामयी उपस्थिति एवं मंगल आशीर्वाद ही हमारे लिए सबसे बड़ा उपहार है।
                     </span>
@@ -272,35 +272,35 @@
                 <!-- 4 Core Pillars -->
                 <div class="row text-center mt-4 pt-3 border-top border-secondary">
                     <div class="col-6 col-lg-3 mb-3">
-                        <div class="pillar-box">
+                        <div class="pillar-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 216, 116, 0.4); border-radius: 12px; padding: 12px 8px;">
                             <i class="far fa-calendar-alt text-warning fa-2x mb-2"></i>
-                            <div class="pillar-label">विवाह तिथियाँ (Dates)</div>
-                            <strong class="pillar-val">01 - 03 फरवरी 2027</strong>
-                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">Mon - Wed</small>
+                            <div class="pillar-label" style="color: rgba(255,255,255,0.75);">विवाह तिथियाँ (Dates)</div>
+                            <strong class="pillar-val" style="color: #ffd874;">01 - 03 फरवरी 2027</strong>
+                            <small class="d-block mt-1" style="font-size: 11px; color: rgba(255,255,255,0.6);">Mon - Wed</small>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 mb-3">
-                        <div class="pillar-box" style="border-color: #ffd874; background: rgba(198, 146, 52, 0.15);">
+                        <div class="pillar-box" style="border: 1.5px solid #ffd874; background: rgba(198, 146, 52, 0.22); border-radius: 12px; padding: 12px 8px;">
                             <i class="fas fa-crown text-warning fa-2x mb-2"></i>
-                            <div class="pillar-label">मुख्य लग्न (Main Vivah)</div>
-                            <strong class="pillar-val text-warning">02 Feb (रात 8:00 बजे)</strong>
-                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">वरमाला एवं पवित्र फेरे</small>
+                            <div class="pillar-label" style="color: #ffd874;">मुख्य लग्न (Main Vivah)</div>
+                            <strong class="pillar-val text-warning" style="color: #ffd874;">02 Feb (रात 8:00 बजे)</strong>
+                            <small class="d-block mt-1" style="font-size: 11px; color: #ffffff;">वरमाला एवं पवित्र फेरे</small>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 mb-3">
-                        <div class="pillar-box">
+                        <div class="pillar-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 216, 116, 0.4); border-radius: 12px; padding: 12px 8px;">
                             <i class="fas fa-map-marked-alt text-danger fa-2x mb-2"></i>
-                            <div class="pillar-label">विवाह स्थल (Venues)</div>
-                            <strong class="pillar-val">हमीरपुर (हिमाचल प्रदेश)</strong>
-                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">दुघा कलां एवं गहली</small>
+                            <div class="pillar-label" style="color: rgba(255,255,255,0.75);">विवाह स्थल (Venues)</div>
+                            <strong class="pillar-val" style="color: #ffd874;">हमीरपुर (हिमाचल प्रदेश)</strong>
+                            <small class="d-block mt-1" style="font-size: 11px; color: rgba(255,255,255,0.6);">दुघा कलां एवं गहली</small>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 mb-3">
-                        <div class="pillar-box">
+                        <div class="pillar-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 216, 116, 0.4); border-radius: 12px; padding: 12px 8px;">
                             <i class="fas fa-utensils text-success fa-2x mb-2"></i>
-                            <div class="pillar-label">शाही प्रीतिभोज (Feast)</div>
-                            <strong class="pillar-val">पारम्परिक हिमाचली धाम</strong>
-                            <small class="text-white-50 d-block mt-1" style="font-size: 11px;">बोटी द्वारा निर्मित सात्विक दावत</small>
+                            <div class="pillar-label" style="color: rgba(255,255,255,0.75);">शाही प्रीतिभोज (Feast)</div>
+                            <strong class="pillar-val" style="color: #ffd874;">पारम्परिक हिमाचली धाम</strong>
+                            <small class="d-block mt-1" style="font-size: 11px; color: rgba(255,255,255,0.6);">बोटी द्वारा निर्मित सात्विक दावत</small>
                         </div>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                     <!-- Center Union Knot & Auspicious Crest -->
                     <div class="col-md-2 text-center mb-3 mb-md-0">
                         <div class="compact-center-knot">
-                            <img src="img/royal-vivah-crest.png" alt="Auspicious Shubh Vivah Crest" class="compact-crest-img">
+                            <img src="img/royal-vivah-crest.png" alt="Auspicious Shubh Vivah Crest" class="compact-crest-img" style="width: 72px; height: 72px; max-width: 72px; border-radius: 50%; object-fit: cover; border: 2.5px solid #ffd874; box-shadow: 0 4px 14px rgba(124, 20, 29, 0.25);">
                             <div class="compact-vivah-tag">Weds</div>
                             <small class="badge badge-danger text-white font-weight-bold px-2 py-1" style="font-size: 10px; letter-spacing: 1px;">
                                 02 FEB 2027
@@ -1460,7 +1460,7 @@
     <a href="#home" class="btn btn-lg btn-outline-warning btn-lg-square back-to-top" style="border-radius: 50%;" aria-label="Back to top"><i class="fa fa-angle-double-up"></i></a>
 
     <!-- Song Lyrics Modal (तेरा मेरा लग्न - Raaz Jary) -->
-    <div class="lyrics-modal-backdrop" id="songLyricsModal" role="dialog" aria-modal="true" aria-labelledby="lyricsTitle">
+    <div class="lyrics-modal-backdrop" id="songLyricsModal" role="dialog" aria-modal="true" aria-labelledby="lyricsTitle" style="display: none;">
         <div class="lyrics-modal-card">
             <div class="lyrics-modal-header">
                 <div>
@@ -1511,7 +1511,7 @@
     <script src="js/main.js"></script>
 
     <!-- Himachali & Vedic Wedding Custom Scripts -->
-    <script src="js/wedding-custom.js"></script>
+    <script src="js/wedding-custom.js?v=2.2"></script>
 </body>
 
 </html>

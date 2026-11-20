@@ -1224,13 +1224,13 @@ html, body {
         letter-spacing: 0.5px !important;
     }
 
-    /* Floating Music Bar & Back to top separation */
+    /* Floating Music Bar & Back to top separation (Clear Netlify Badge on right) */
     .floating-music-bar {
-        left: 8px !important;
-        right: 8px !important;
-        bottom: 8px !important;
+        left: 10px !important;
+        right: auto !important;
+        bottom: 22px !important;
         width: auto !important;
-        max-width: calc(100% - 16px) !important;
+        max-width: calc(100% - 90px) !important;
         padding: 6px 10px !important;
         z-index: 1040 !important;
     }
@@ -1984,14 +1984,14 @@ html, body {
     background: rgba(0,0,0,0.65);
     backdrop-filter: blur(4px);
     z-index: 999999;
-    display: none;
+    display: none !important;
     align-items: center;
     justify-content: center;
     padding: 15px;
 }
 
 .lyrics-modal-backdrop.show {
-    display: flex;
+    display: flex !important;
 }
 
 .lyrics-modal-card {
@@ -2253,11 +2253,11 @@ html, body {
 
 /* Formal Digital Wedding Patrika Letter Section */
 .formal-invitation-letter-section {
-    background: linear-gradient(180deg, #2b0609 0%, #450a0f 50%, #2b0609 100%);
-    border-top: 3px solid #c69234;
-    border-bottom: 3px solid #c69234;
+    background: linear-gradient(180deg, #2b0609 0%, #450a0f 50%, #2b0609 100%) !important;
+    border-top: 3px solid #c69234 !important;
+    border-bottom: 3px solid #c69234 !important;
     position: relative;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .formal-invitation-letter-section::before {
@@ -2272,12 +2272,18 @@ html, body {
 }
 
 .invitation-scroll-card {
-    background: rgba(30, 4, 7, 0.85);
-    border: 2px solid #ffd874;
+    background: rgba(30, 4, 7, 0.95) !important;
+    border: 2px solid #ffd874 !important;
     border-radius: 18px;
     padding: 35px 25px;
     position: relative;
-    box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+    color: #ffffff !important;
+}
+
+.invitation-scroll-card h2,
+.invitation-scroll-card p {
+    color: #ffffff !important;
 }
 
 .invitation-gold-seal {
@@ -2571,10 +2577,12 @@ html, body {
 .compact-crest-img {
     width: 80px;
     height: 80px;
+    max-width: 80px;
     border-radius: 50%;
     border: 3px solid #ffd874;
     box-shadow: 0 4px 14px rgba(124, 20, 29, 0.2);
     margin-bottom: 6px;
+    object-fit: cover;
 }
 
 .compact-vivah-tag {
@@ -2621,8 +2629,9 @@ html, body {
         padding: 12px 0;
     }
     .compact-crest-img {
-        width: 68px;
-        height: 68px;
+        width: 68px !important;
+        height: 68px !important;
+        max-width: 68px !important;
     }
 }
 
