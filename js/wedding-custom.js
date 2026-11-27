@@ -1,5 +1,5 @@
 /**
- * Kanika & Vikas Wedding - Custom Interactive Scripts
+ * Vikas & Kanika Wedding - Custom Interactive Scripts
  * - "Tera Mera Lagan" (तेरा मेरा लग्न) Background Audio Player (Seamless Autoplay with Gesture Unlock)
  * - Dual Theme Switcher (Royal Vedic & Modern Minimalist)
  * - Live Countdown to Feb 01, 2027
@@ -80,8 +80,8 @@ function triggerPetalShower(count) {
 function shareWeddingWebsite() {
     const shareUrl = window.location.href.split('#')[0];
     const shareData = {
-        title: "Kanika & Vikas Wedding | Auspicious Vivah",
-        text: "With divine blessings of family and ancestors, cordially inviting you with family to celebrate the sacred marriage of Kanika & Vikas in Hamirpur, H.P. (01-03 Feb 2027).",
+        title: "Vikas & Kanika Wedding | Auspicious Vivah",
+        text: "With divine blessings of family and ancestors, cordially inviting you with family to celebrate the sacred marriage of Vikas & Kanika in Hamirpur, H.P. (01-03 Feb 2027).",
         url: shareUrl
     };
 
@@ -102,7 +102,7 @@ function shareWeddingWebsite() {
 
 // Copy Hashtag Helper
 function copyWeddingHashtag(tag) {
-    tag = tag || "#KanikaWedsVikas";
+    tag = tag || "#VikasWedsKanika";
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(tag).then(() => {
             showWeddingToast(`Hashtag ${tag} copied to clipboard!`, "🏷️");
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hashtagBtns.forEach(btn => {
         btn.addEventListener("click", function (e) {
             e.preventDefault();
-            const tag = this.getAttribute("data-hashtag") || "#KanikaWedsVikas";
+            const tag = this.getAttribute("data-hashtag") || "#VikasWedsKanika";
             copyWeddingHashtag(tag);
         });
     });
@@ -466,5 +466,39 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('./sw.js').catch(function () {});
         });
+    }
+
+    // -------------------------------------------------------------
+    // 12. Rich Scroll-Reveal Animation Engine (IntersectionObserver)
+    // -------------------------------------------------------------
+    const animTargets = document.querySelectorAll(
+        '.compact-couple-card, .vedic-section-title, .ritual-card, ' +
+        '.venue-card, .dhaam-card-item, .invitation-scroll-card, ' +
+        '.story-card-banner, .gallery-item, .host-family-card, ' +
+        '.direct-dates-strip, .countdown-container, .multi-select-box'
+    );
+
+    animTargets.forEach((el, index) => {
+        el.classList.add('reveal-on-scroll');
+        if (index % 3 === 1) el.classList.add('delay-1');
+        else if (index % 3 === 2) el.classList.add('delay-2');
+    });
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        animTargets.forEach(el => observer.observe(el));
+    } else {
+        animTargets.forEach(el => el.classList.add('is-visible'));
     }
 });

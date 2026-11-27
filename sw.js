@@ -1,21 +1,21 @@
 /**
- * Kanika & Vikas Wedding - Lightweight Offline Service Worker
+ * Vikas & Kanika Wedding - Lightweight Offline Service Worker
  * Ensures guests can access schedules, venues, and contacts even with spotty connectivity.
  */
 
-const CACHE_NAME = 'kanika-vikas-wedding-v2';
+const CACHE_NAME = 'vikas-kanika-wedding-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './invitation-card.html',
-  './css/style.css?v=2.2',
-  './css/himachali-vedic.css?v=2.2',
+  './css/style.css?v=2.4',
+  './css/himachali-vedic.css?v=2.4',
   './js/main.js',
-  './js/wedding-custom.js?v=2.2',
+  './js/wedding-custom.js?v=2.4',
   './img/royal-vivah-crest.png',
   './img/invitation-card-full-preview.jpg',
   './img/favicon.ico',
-  './Kanika-and-Vikas-Wedding.ics',
+  './Vikas-and-Kanika-Wedding.ics',
   './manifest.json'
 ];
 

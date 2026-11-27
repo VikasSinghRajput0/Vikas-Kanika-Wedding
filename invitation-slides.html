@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1080, height=1920, initial-scale=1.0">
+    <title>Vikas & Kanika - Royal Wedding Video Slides</title>
+    
+    <!-- Authentic Luxury Fonts matching Netlify Reference Site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Pinyon+Script&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #faf6ed;
+            --paper-light: #fffdf8;
+            --ink: #30251f;
+            --gold: #b18a4d;
+            --gold-light: #d6b274;
+            --gold-dark: #8c6830;
+            --wine: #713b38;
+            --wine-dark: #4e2220;
+            --border: #c4a46d;
+            --muted: #6f5d52;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-display: 'Playfair Display', serif;
+            --font-script: 'Pinyon Script', cursive;
+            --font-hindi: 'Noto Serif Devanagari', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 1080px;
+            height: 1920px;
+            overflow: hidden;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-serif);
+            position: relative;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Continuous Ambient Particles Layer */
+        .ambient-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Subtle Corner & Border Ornaments (Permanent Luxury Framing) */
+        .page-frame {
+            position: absolute;
+            top: 36px;
+            left: 36px;
+            right: 36px;
+            bottom: 36px;
+            border: 2px solid rgba(196, 164, 109, 0.45);
+            pointer-events: none;
+            z-index: 6;
+        }
+
+        .page-frame::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            border: 1px dashed rgba(196, 164, 109, 0.35);
+        }
+
+        .corner-mandala {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            pointer-events: none;
+            opacity: 0.35;
+            z-index: 7;
+        }
+        .corner-tl { top: 40px; left: 40px; }
+        .corner-tr { top: 40px; right: 40px; transform: scaleX(-1); }
+        .corner-bl { bottom: 40px; left: 40px; transform: scaleY(-1); }
+        .corner-br { bottom: 40px; right: 40px; transform: scale(-1); }
+
+        /* Shared Typography Components - Scaled for 1080x1920 Full HD */
+        .kicker {
+            font-family: var(--font-hindi);
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--gold-dark);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .shloka-verse {
+            font-family: var(--font-hindi);
+            font-size: 36px;
+            line-height: 1.65;
+            color: var(--wine);
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(177, 138, 77, 0.2);
+            margin: 8px 0 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 82px;
+            font-weight: 600;
+            color: var(--wine);
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .goldline {
+            color: var(--gold);
+            letter-spacing: 14px;
+            font-size: 36px;
+            margin: 14px 0;
+        }
+
+        /* Arched Temple/Mandap Card - Filled & Well-proportioned */
+        .arched-card {
+            background: var(--paper-light);
+            border: 3px solid rgba(196, 164, 109, 0.85);
+            border-radius: 180px 180px 50px 50px;
+            padding: 60px 50px;
+            box-shadow: 0 24px 70px rgba(94, 68, 32, 0.12);
+            width: 980px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 22px;
+        }
+
+        /* Slide System: ZERO ghosting via display:none on inactive slides */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            padding: 65px 50px;
+            display: none !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex !important;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 20;
+        }
+
+        .slide-inner {
+            width: 100%;
+            max-width: 980px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* =========================================================
+           SCENE 1: ROYAL ENVELOPE / DOOR OPENING REVEAL
+           ========================================================= */
+        .door-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            z-index: 100;
+            pointer-events: none;
+            display: flex;
+        }
+
+        .door-panel {
+            width: 540px;
+            height: 1920px;
+            background: linear-gradient(135deg, #2b060a 0%, #4a0d14 50%, #2b060a 100%);
+            box-shadow: inset 0 0 80px rgba(0,0,0,0.7);
+            position: relative;
+            transition: transform 2.2s cubic-bezier(0.7, 0, 0.2, 1);
+        }
+
+        .door-left {
+            border-right: 3px solid #d4af37;
+            transform-origin: left center;
+        }
+
+        .door-right {
+            border-left: 3px solid #d4af37;
+            transform-origin: right center;
+        }
+
+        .door-overlay.opened .door-left {
+            transform: translateX(-540px);
+        }
+
+        .door-overlay.opened .door-right {
+            transform: translateX(540px);
+        }
+
+        .centre-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 290px;
+            height: 290px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 35%, #ffd874 0%, #c69234 60%, #8c601b 100%);
+            border: 7px solid #fff3cf;
+            box-shadow: 0 16px 45px rgba(0,0,0,0.75), inset 0 0 25px rgba(0,0,0,0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #4a090e;
+            text-align: center;
+            transition: transform 1.2s ease-in, opacity 1.0s ease-in;
+            z-index: 102;
+        }
+
+        .door-overlay.opened .centre-seal {
+            transform: translate(-50%, -50%) scale(0.1);
+            opacity: 0;
+        }
+
+        .seal-om {
+            font-family: var(--font-hindi);
+            font-size: 78px;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .seal-text {
+            font-family: var(--font-hindi);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-top: 6px;
+        }
+
+        /* =========================================================
+           SLIDE 1: LORD GANESHA & REVEAL
+           ========================================================= */
+        .ganesha-hero-art {
+            width: 560px;
+            max-height: 560px;
+            object-fit: contain;
+            filter: drop-shadow(0 16px 32px rgba(113, 59, 56, 0.24));
+            margin: 12px auto;
+        }
+
+        .hero-names-block {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .hero-name {
+            font-family: var(--font-script);
+            font-size: 168px;
+            line-height: 0.95;
+            color: var(--wine);
+            text-shadow: 0 4px 14px rgba(113, 59, 56, 0.15);
+        }
+
+        .hero-weds-small {
+            font-family: var(--font-serif);
+            font-size: 34px;
+            letter-spacing: 12px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .hero-date-banner {
+            font-family: var(--font-display);
+            font-size: 34px;
+            letter-spacing: 4px;
+            color: var(--ink);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* =========================================================
+           SLIDE 2: INVITATION PATRIKA CARD
+           ========================================================= */
+        .om-symbol {
+            font-family: var(--font-hindi);
+            font-size: 88px;
+            line-height: 1;
+            color: var(--wine);
+            margin-bottom: 10px;
+        }
+
+        .patrika-blessing {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            line-height: 1.6;
+            color: var(--ink);
+            font-style: italic;
+            margin: 14px 0 22px;
+        }
+
+        .person-script {
+            font-family: var(--font-script);
+            font-size: 108px;
+            line-height: 1.05;
+            color: var(--wine);
+            margin-bottom: 4px;
+        }
+
+        .parent-info {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            color: var(--ink);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .residence-info {
+            font-family: var(--font-sans);
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* =========================================================
+           SLIDE 3: PROGRAMME / ITINERARY
+           ========================================================= */
+        .programme-box {
+            text-align: left;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .programme-day {
+            font-family: var(--font-display);
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--wine);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+
+        .programme-day:first-child {
+            margin-top: 0;
+        }
+
+        .programme-event {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px dotted rgba(196, 164, 109, 0.45);
+        }
+
+        .programme-event:last-child {
+            border-bottom: none;
+        }
+
+        .event-title {
+            font-family: var(--font-serif);
+            font-size: 34px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .event-time {
+            font-family: var(--font-sans);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gold-dark);
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           SLIDE 4: THE VENUES
+           ========================================================= */
+        .venue-card-inner {
+            padding: 26px 28px;
+            background: rgba(250, 246, 237, 0.7);
+            border: 1.5px solid rgba(196, 164, 109, 0.65);
+            border-radius: 24px;
+            margin-bottom: 14px;
+        }
+
+        .venue-tag {
+            font-family: var(--font-sans);
+            font-size: 22px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .venue-name-big {
+            font-family: var(--font-display);
+            font-size: 54px;
+            font-weight: 700;
+            color: var(--wine);
+            margin-bottom: 8px;
+        }
+
+        .venue-details {
+            font-family: var(--font-serif);
+            font-size: 30px;
+            line-height: 1.55;
+            color: var(--ink);
+        }
+
+        /* =========================================================
+           SLIDE 5: CLOSING & BLESSINGS
+           ========================================================= */
+        .vows-text {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            line-height: 1.7;
+            color: var(--ink);
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .closing-script-names {
+            font-family: var(--font-script);
+            font-size: 145px;
+            line-height: 1.0;
+            color: var(--wine);
+            margin: 14px 0 8px;
+        }
+
+        .contact-row {
+            font-family: var(--font-sans);
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            font-weight: 700;
+            margin-top: 14px;
+        }
+
+        .hashtag-text {
+            font-family: var(--font-sans);
+            font-size: 30px;
+            letter-spacing: 3px;
+            color: var(--wine);
+            font-weight: 700;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Continuous Ambient Canvas for Floating Petals -->
+    <canvas id="ambientCanvas" class="ambient-canvas" width="1080" height="1920"></canvas>
+
+    <!-- Luxury Gold Corner Borders -->
+    <div class="page-frame"></div>
+    <svg class="corner-mandala corner-tl" viewBox="0 0 100 100"><path fill="#b18a4d" d="M0,0 L100,0 C60,20 20,60 0,100 Z M15,15 C35,35 45,55 50,85 C35,70 25,50 15,15 Z"/></svg>
+    <svg class="corner-mandala corner-tr" viewBox="0 0 100 100"><path fill="#b18a4d" d="M0,0 L100,0 C60,20 20,60 0,100 Z M15,15 C35,35 45,55 50,85 C35,70 25,50 15,15 Z"/></svg>
+    <svg class="corner-mandala corner-bl" viewBox="0 0 100 100"><path fill="#b18a4d" d="M0,0 L100,0 C60,20 20,60 0,100 Z M15,15 C35,35 45,55 50,85 C35,70 25,50 15,15 Z"/></svg>
+    <svg class="corner-mandala corner-br" viewBox="0 0 100 100"><path fill="#b18a4d" d="M0,0 L100,0 C60,20 20,60 0,100 Z M15,15 C35,35 45,55 50,85 C35,70 25,50 15,15 Z"/></svg>
+
+    <!-- =========================================================
+         GRAND ROYAL ENVELOPE / DOOR OPENING (0s – 2.0s)
+         ========================================================= -->
+    <div class="door-overlay" id="doorOverlay">
+        <div class="door-panel door-left"></div>
+        <div class="door-panel door-right"></div>
+        <div class="centre-seal" id="centreSeal">
+            <div class="seal-om">ॐ</div>
+            <div class="seal-text">॥ शुभ विवाह ॥</div>
+            <div style="font-family: var(--font-sans); font-size: 13px; letter-spacing: 2px; margin-top: 4px; color: #5a1219; font-weight: 700;">
+                VIKAS &amp; KANIKA
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SLIDE 1: GANESHA INVOCATION & GRAND REVEAL (0s – 6.0s)
+         ========================================================= -->
+    <div class="slide active" id="slide1">
+        <div class="slide-inner">
+            <div>
+                <div class="kicker">॥ श्री गणेशाय नमः ॥</div>
+                <div class="shloka-verse">
+                    वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः।<br>
+                    निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+                </div>
+                <div class="goldline">❧ ✦ ❧</div>
+            </div>
+
+            <!-- Authentic Gold Ganesha Artwork - Generous 530px Presence -->
+            <img src="img/ref-ganesha.png" alt="Lord Ganesha" class="ganesha-hero-art">
+
+            <div class="hero-names-block">
+                <div class="hero-name">Vikas</div>
+                <div class="hero-weds-small">✦ WEDS ✦</div>
+                <div class="hero-name">Kanika</div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <div class="goldline">❧ ❦ ❧</div>
+                <div class="hero-date-banner">
+                    01<sup>ST</sup> – 03<sup>RD</sup> FEBRUARY, 2027 • HAMIRPUR, H.P.
+                </div>
+                <div style="font-size: 27px; color: var(--muted); margin-top: 10px; font-style: italic;">
+                    Two families · One sacred Devbhoomi union
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SLIDE 2: INVITATION PATRIKA (ARCHED MANDAP CARD) (6.0s – 12.5s)
+         ========================================================= -->
+    <div class="slide" id="slide2">
+        <div class="slide-inner">
+            <div style="margin-bottom: 8px;">
+                <div class="kicker">With the blessings of our revered ancestors &amp; elders</div>
+                <h2 class="section-title">Wedding Invitation</h2>
+                <div class="goldline">❧ ❦ ❧</div>
+            </div>
+
+            <div class="arched-card">
+                <div>
+                    <div class="om-symbol">ॐ</div>
+                    <div class="kicker" style="margin-bottom: 8px; font-size: 26px;">॥ श्री कुलदेवी नमः ॥ &nbsp;•&nbsp; ॥ श्री कुलदेवता नमः ॥</div>
+                    <p class="patrika-blessing">
+                        With the divine blessings of our beloved elders and ancestors,<br>
+                        we cordially invite you with family to celebrate the sacred wedding of
+                    </p>
+                </div>
+
+                <div>
+                    <div class="person-script">Mr. Vikas Kumar</div>
+                    <p class="parent-info">(Beloved Son of Smt. Sheela Devi &amp; Sh. Suresh Kumar)</p>
+                    <p class="residence-info">VPO Gahli, Tehsil Galore, District Hamirpur, H.P.</p>
+                </div>
+
+                <div>
+                    <div class="goldline" style="margin: 8px 0;">❧ ❦ ❧</div>
+                    <div style="font-size: 30px; color: var(--gold-dark); font-weight: 600; letter-spacing: 6px;">✦ WEDS ✦</div>
+                    <div class="goldline" style="margin: 8px 0;">❧ ❦ ❧</div>
+                </div>
+
+                <div>
+                    <div class="person-script">Ms. Kanika</div>
+                    <p class="parent-info">(Beloved Daughter of Smt. Taro Devi &amp; Sh. Kuldeep Singh)</p>
+                    <p class="residence-info">Village Dugha Kalan, P.O. Dugha, District Hamirpur, H.P.</p>
+                </div>
+
+                <div style="border-top: 1.5px solid rgba(177, 138, 77, 0.4); padding-top: 16px;">
+                    <div class="hero-date-banner" style="font-size: 30px; color: var(--wine);">
+                        Tuesday, 02<sup>nd</sup> February, 2027 • Main Vivah
+                    </div>
+                    <p style="font-size: 26px; color: var(--muted); line-height: 1.5; font-style: italic; margin-top: 10px;">
+                        "Your gracious presence &amp; warm blessings are our greatest gift."
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 8px;">
+                <p style="font-size: 24px; color: var(--muted); font-style: italic;">
+                    Hamirpur, Devbhoomi Himachal Pradesh
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SLIDE 3: THE PROGRAMME (CEREMONIES ITINERARY) (12.5s – 19.5s)
+         ========================================================= -->
+    <div class="slide" id="slide3">
+        <div class="slide-inner">
+            <div>
+                <div class="kicker">॥ शुभ मांगलिक कार्यक्रम ॥</div>
+                <h2 class="section-title">The Programme</h2>
+                <div class="goldline">✧ ❦ ✧</div>
+            </div>
+
+            <div class="arched-card" style="padding: 44px 45px; gap: 14px;">
+                <div class="programme-box">
+                    <div style="margin-bottom: 8px;">
+                        <div class="programme-day">Monday, 01<sup>st</sup> February, 2027</div>
+                        <div class="programme-event">
+                            <div>
+                                <span class="event-title">🌸 Mehndi &amp; Lady Sangeet (महिला संगीत)</span>
+                                <div style="font-size: 20px; color: var(--muted); font-style: italic;">Traditional Himachali Folk Songs &amp; Nati Dance</div>
+                            </div>
+                            <span class="event-time">07:00 P.M. Onwards</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 8px;">
+                        <div class="programme-day" style="color: #942b27; border-color: #b18a4d;">Tuesday, 02<sup>nd</sup> February, 2027 (Main Vivah)</div>
+                        <div class="programme-event">
+                            <div>
+                                <span class="event-title">🌼 Shubh Haldi &amp; Tel Pujan (हल्दी एवं तेल पूजन)</span>
+                                <div style="font-size: 20px; color: var(--muted); font-style: italic;">Auspicious Holy Snan &amp; Turmeric Ceremony</div>
+                            </div>
+                            <span class="event-time">10:00 A.M.</span>
+                        </div>
+                        <div class="programme-event">
+                            <div>
+                                <span class="event-title">👑 Royal Sehra Bandi (शाही सेहरा बंदी)</span>
+                                <div style="font-size: 20px; color: var(--muted); font-style: italic;">Kuldevi Blessings at Groom's Residence (VPO Gahli)</div>
+                            </div>
+                            <span class="event-time">03:00 P.M.</span>
+                        </div>
+                        <div class="programme-event">
+                            <div>
+                                <span class="event-title">🐎 Grand Barat Departure (बारात प्रस्थान)</span>
+                                <div style="font-size: 20px; color: var(--muted); font-style: italic;">Procession with Dhol, Shehnai &amp; Band Baja</div>
+                            </div>
+                            <span class="event-time">05:00 P.M.</span>
+                        </div>
+                        <div class="programme-event" style="background: rgba(177, 138, 77, 0.12); padding: 8px 12px; border-radius: 10px;">
+                            <div>
+                                <span class="event-title" style="color: #942b27; font-weight: 700;">🌺 Royal Varmala, Reception &amp; Vedic Phere</span>
+                                <div style="font-size: 20px; color: var(--wine); font-weight: 600;">Main Vivah Ceremony at Bride's Venue (Dugha Kalan)</div>
+                            </div>
+                            <span class="event-time" style="color: #942b27;">08:00 P.M. Onwards</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="programme-day">Wednesday, 03<sup>rd</sup> February, 2027</div>
+                        <div class="programme-event">
+                            <div>
+                                <span class="event-title">🕊️ Vidaai Ceremony (भावभीनी विदाई)</span>
+                                <div style="font-size: 20px; color: var(--muted); font-style: italic;">Tearful Blessings &amp; Departure to Groom's Residence</div>
+                            </div>
+                            <span class="event-time">07:00 A.M.</span>
+                        </div>
+                        <div class="programme-event">
+                            <div>
+                                <span class="event-title">🍲 Traditional Royal Himachali Dhaam (शाही धाम)</span>
+                                <div style="font-size: 20px; color: var(--muted); font-style: italic;">Grand Festive Feast cooked by Traditional Boti Chefs</div>
+                            </div>
+                            <span class="event-time">12:30 P.M. Onwards</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-top: 1.5px solid rgba(177, 138, 77, 0.4); padding-top: 12px;">
+                    <p style="font-size: 24px; color: var(--wine); font-weight: 600;">
+                        Hamirpur, Devbhoomi Himachal Pradesh
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <div class="goldline">❧ ✿ ❧</div>
+                <p style="font-size: 24px; color: var(--muted); font-style: italic;">
+                    Pahadi traditional music, Shehnai melodies &amp; authentic Vedic rituals
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SLIDE 4: THE VENUES (19.5s – 26.5s)
+         ========================================================= -->
+    <div class="slide" id="slide4">
+        <div class="slide-inner">
+            <div>
+                <div class="kicker">॥ विवाह स्थल एवं परिवार निवास ॥</div>
+                <h2 class="section-title">The Venues</h2>
+                <div class="goldline">❧ ❦ ❧</div>
+            </div>
+
+            <div class="arched-card" style="padding: 50px 48px; gap: 18px;">
+                <!-- Groom Venue -->
+                <div class="venue-card-inner" style="padding: 26px 28px; border: 2px solid rgba(196, 164, 109, 0.7); background: rgba(255, 253, 248, 0.95); border-radius: 24px;">
+                    <div class="venue-tag" style="font-size: 24px; letter-spacing: 3px; color: var(--gold-dark); font-weight: 700;">👑 वरपक्ष निवास • GROOM'S RESIDENCE</div>
+                    <div class="venue-name-big" style="font-size: 52px; font-weight: 700; color: var(--wine); margin: 6px 0;">VPO Gahli, Hamirpur</div>
+                    <p class="venue-details" style="font-size: 29px; line-height: 1.6; color: var(--ink);">
+                        Village &amp; Post Office Gahli, Tehsil Galore,<br>
+                        District Hamirpur, Himachal Pradesh – 177044<br>
+                        <span style="font-size: 24px; color: var(--wine); font-weight: 600; display: block; margin-top: 8px;">
+                            (Tel Pujan • Sehra Bandi • Barat Departure • Royal Himachali Dham)
+                        </span>
+                    </p>
+                </div>
+
+                <div class="goldline" style="margin: 2px 0;">❧ ❦ ❧</div>
+
+                <!-- Bride Venue -->
+                <div class="venue-card-inner" style="padding: 26px 28px; border: 2px solid rgba(196, 164, 109, 0.7); background: rgba(255, 253, 248, 0.95); border-radius: 24px;">
+                    <div class="venue-tag" style="font-size: 24px; letter-spacing: 3px; color: var(--gold-dark); font-weight: 700;">🌸 विवाह स्थल • WEDDING VENUE &amp; BRIDE'S RESIDENCE</div>
+                    <div class="venue-name-big" style="font-size: 52px; font-weight: 700; color: var(--wine); margin: 6px 0;">Village Dugha Kalan, Hamirpur</div>
+                    <p class="venue-details" style="font-size: 29px; line-height: 1.6; color: var(--ink);">
+                        Village Dugha Kalan, Post Office Dugha,<br>
+                        District Hamirpur, Himachal Pradesh – 177001<br>
+                        <span style="font-size: 24px; color: var(--wine); font-weight: 600; display: block; margin-top: 8px;">
+                            (Grand Varmala • Vedic Lagan &amp; Sacred Saptapadi Pheras • Vidaai)
+                        </span>
+                    </p>
+                </div>
+
+                <!-- Connectivity & Route -->
+                <div style="background: rgba(177, 138, 77, 0.12); border: 2px dashed var(--gold); border-radius: 20px; padding: 18px 22px;">
+                    <p style="font-size: 25px; color: var(--ink); font-weight: 700;">
+                        🚗 Scenic Route via Galore – Hamirpur Highway (~18–20 km / 25 mins)
+                    </p>
+                    <div style="font-size: 23px; color: var(--muted); margin-top: 4px;">
+                        Direct road connectivity &amp; spacious open parking available at both family venues
+                    </div>
+                </div>
+
+                <!-- Helpline / RSVP -->
+                <div style="border-top: 1.5px solid rgba(177, 138, 77, 0.4); padding-top: 14px;">
+                    <div class="contact-row" style="font-size: 28px; margin-top: 0;">
+                        Helpline / Location Assistance: +91 82198 77037
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="goldline">✧ ✧ ✧</div>
+                <p style="font-size: 24px; color: var(--muted); font-style: italic;">
+                    Hamirpur, Devbhoomi Himachal Pradesh
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         SLIDE 5: CLOSING BLESSINGS & WELCOME (26.5s – 33.5s)
+         ========================================================= -->
+    <div class="slide" id="slide5">
+        <div class="slide-inner">
+            <div>
+                <div class="kicker">॥ सस्नेह निमंत्रण • DEV BHOOMI VIVAH ॥</div>
+                <img src="img/ref-ganesha.png" alt="Lord Ganesha Blessing" class="ganesha-hero-art" style="width: 440px; max-height: 440px; margin: 4px auto;">
+            </div>
+
+            <div class="arched-card" style="padding: 45px 50px; gap: 16px;">
+                <div class="shloka-verse" style="font-size: 32px; margin: 0; line-height: 1.6;">
+                    मङ्गलम् भगवान विष्णुः मङ्गलम् गरुडध्वजः।<br>
+                    मङ्गलम् पुण्डरीकाक्षः मङ्गलाय तनो हरिः॥
+                </div>
+
+                <div class="vows-text" style="font-size: 28px; line-height: 1.65; color: var(--ink); max-width: 880px;">
+                    "With sacred vows around the holy fire, two souls unite with endless love and trust, beginning a blessed journey to cherish forever."
+                </div>
+
+                <div class="goldline" style="margin: 4px 0;">❧ ❦ ❧</div>
+
+                <div>
+                    <div class="closing-script-names" style="font-size: 140px; line-height: 1.0;">Vikas &amp; Kanika</div>
+                    <div style="font-family: var(--font-hindi); font-size: 40px; color: var(--gold-dark); font-weight: 700; margin-top: 4px;">
+                        विकास संग कानिका
+                    </div>
+                </div>
+
+                <div style="border-top: 1.5px solid rgba(177, 138, 77, 0.4); padding-top: 16px;">
+                    <div style="font-size: 29px; color: var(--muted); font-style: italic;">
+                        Awaiting Your Gracious Presence &amp; Blessings
+                    </div>
+                    <div style="font-family: var(--font-display); font-size: 38px; color: var(--wine); font-weight: 700; margin-top: 6px;">
+                        The Rajput &amp; Thakur Families
+                    </div>
+                    <div class="contact-row" style="font-size: 28px; margin-top: 8px;">
+                        Contact / RSVP: +91 82198 77037
+                    </div>
+                    <div class="hashtag-text" style="font-size: 30px; margin-top: 6px;">
+                        #VikasWedsKanika
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p style="font-size: 24px; color: var(--muted); font-style: italic;">
+                    With Best Compliments From All Relatives &amp; Friends
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ambient Falling Petals JavaScript -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('ambientCanvas');
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const colors = ['rgba(214, 82, 82, 0.7)', 'rgba(235, 145, 60, 0.65)', 'rgba(255, 230, 160, 0.75)', 'rgba(177, 138, 77, 0.6)'];
+
+            for (let i = 0; i < 48; i++) {
+                particles.push({
+                    x: Math.random() * 1080,
+                    y: Math.random() * 1920,
+                    size: Math.random() * 12 + 8,
+                    speedY: Math.random() * 1.5 + 0.8,
+                    speedX: Math.random() * 1.0 - 0.5,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotSpeed: Math.random() * 0.03 - 0.015,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation);
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, 1080, 1920);
+                particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += Math.sin(p.y * 0.005) * 0.8 + p.speedX;
+                    p.rotation += p.rotSpeed;
+                    if (p.y > 1940) {
+                        p.y = -20;
+                        p.x = Math.random() * 1080;
+                    }
+                    drawPetal(p);
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+        // Automatic Royal Door Opening at 1.0s
+        window.openDoors = function() {
+            setTimeout(() => {
+                const overlay = document.getElementById('doorOverlay');
+                if (overlay) overlay.classList.add('opened');
+            }, 1000);
+        };
+
+        // Slide Orchestration: Total 33.5 Seconds
+        const slideSchedule = [
+            { id: 'slide1', startMs: 0 },
+            { id: 'slide2', startMs: 6000 },
+            { id: 'slide3', startMs: 12500 },
+            { id: 'slide4', startMs: 19500 },
+            { id: 'slide5', startMs: 26500 }
+        ];
+
+        function activateSlide(slideId) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(slideId);
+            if (target) {
+                target.classList.add('active');
+            }
+        }
+
+        window.startSlideShow = function() {
+            window.openDoors();
+            slideSchedule.forEach(item => {
+                setTimeout(() => {
+                    activateSlide(item.id);
+                }, item.startMs);
+            });
+        };
+    </script>
+</body>
+</html>
