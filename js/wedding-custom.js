@@ -340,22 +340,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // -------------------------------------------------------------
-    // 6. Interactive FAQ Accordion
-    // -------------------------------------------------------------
-    const faqItems = document.querySelectorAll(".faq-item");
-    faqItems.forEach(item => {
-        const header = item.querySelector(".faq-header");
-        if (header) {
-            header.addEventListener("click", function () {
-                const isActive = item.classList.contains("active");
-                faqItems.forEach(i => i.classList.remove("active"));
-                if (!isActive) {
-                    item.classList.add("active");
-                }
-            });
-        }
-    });
 
     // -------------------------------------------------------------
     // 7. Flower Petal Shower Buttons
@@ -473,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // -------------------------------------------------------------
     const animTargets = document.querySelectorAll(
         '.compact-couple-card, .vedic-section-title, .ritual-card, ' +
-        '.venue-card, .dhaam-card-item, .invitation-scroll-card, ' +
+        '.venue-card, .invitation-scroll-card, ' +
         '.story-card-banner, .gallery-item, .host-family-card, ' +
         '.direct-dates-strip, .countdown-container, .multi-select-box'
     );

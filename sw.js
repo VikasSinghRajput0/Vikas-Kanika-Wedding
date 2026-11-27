@@ -3,15 +3,15 @@
  * Ensures guests can access schedules, venues, and contacts even with spotty connectivity.
  */
 
-const CACHE_NAME = 'vikas-kanika-wedding-v4';
+const CACHE_NAME = 'vikas-kanika-wedding-v5';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './invitation-card.html',
-  './css/style.css?v=2.4',
-  './css/himachali-vedic.css?v=2.4',
+  './css/style.css?v=2.5',
+  './css/himachali-vedic.css?v=2.5',
   './js/main.js',
-  './js/wedding-custom.js?v=2.4',
+  './js/wedding-custom.js?v=2.5',
   './img/royal-vivah-crest.png',
   './img/invitation-card-full-preview.jpg',
   './img/favicon.ico',
